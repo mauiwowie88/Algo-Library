@@ -51,7 +51,6 @@ const arrayOfProducts2 = (arr) => {
     return arr;
 }
 
-console.log(array)
 
 /////////////////////////////////////////////////////////////////////
 /* Algo God Approach
