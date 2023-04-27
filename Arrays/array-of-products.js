@@ -47,10 +47,55 @@ const arrayOfProducts = (arr) => {
 
 const arrayOfProducts2 = (arr) => {
     const product = arr.reduce((total, num) => total * num, 1)
-    const looper = arr.forEach((num, i) => {
-        arr[i] = product / num;
-    });
+    arr.forEach((num, i) => arr[i] = product / num);
     return arr;
 }
 
-console.log(arrayOfProducts2(array))
+console.log(array)
+
+/////////////////////////////////////////////////////////////////////
+/* Algo God Approach
+    This is how Zack the Free Man didit.
+    looks like he uses tthe new keyword on the prouctts var
+    To create a new array with the input length filled with 1s
+    Has a left var we dont know what its doing yet.
+    .. ill coome back to this..
+*/
+
+
+
+// O(n) time | O(n) space
+const arrayOfProducts3 = (array) => {
+    // declare products array and fill with 1
+    const products = new Array(array.length).fill(1);
+    // calculate left running product
+    let leftRunningProduct = 1;
+    for (let i = 0; i < array.length; i++) {
+      products[i] *= leftRunningProduct;
+      leftRunningProduct *= array[i];
+    }
+    // calculate right running product
+    let rightRunningProduct = 1;
+    for (let i = array.length - 1; i >= 0; i--) {
+      products[i] *= rightRunningProduct;
+      rightRunningProduct *= array[i];
+    }
+    return products;
+  };
+  
+  // O(n) time | O(n) space
+  const arrayOfProducts4 = (array) => {
+    const leftProducts = new Array(array.length).fill(1);
+    const rightProducts = new Array(array.length).fill(1);
+    for (let i = 1; i < leftProducts.length; i++) {
+      leftProducts[i] = array[i - 1] * leftProducts[i - 1];
+    }
+    for (let i = array.length - 2; i >= 0; i--) {
+      rightProducts[i] = array[i + 1] * rightProducts[i + 1];
+    }
+    const output = [];
+    for (let i = 0; i < array.length; i++) {
+      output[i] = leftProducts[i] * rightProducts[i];
+    }
+    return output;
+  };

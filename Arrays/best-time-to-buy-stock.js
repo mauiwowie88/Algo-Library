@@ -16,18 +16,82 @@ Input: prices = [7,6,4,3,1]
 Output: 0
 Explanation: In this case, no transactions are done and the max profit = 0.
 
-Ex: [2,9,3,7,6,9] = 7
-    [1,2,3,4,5,7] = 2
-    [2,1,8,6,3,9] = 9
-    [3,1,4,2,5,7] = 16
+Ex: [2,9,3,7,6,8] = 7
+    [1,2,3,4,5,7] = 6
+    [2,1,8,6,3,9] = 8
+    [3,1,4,2,5,7] = 6
+
 
 -Approaches: {
-    im thnking we loop thrru the arr 
+    1.im thnking we loop thrru the arr 
     on each iteration we check if number one is bigger, if so continue
     elsse we subtractt number two from one and store as highestt difference
+
+    2. this approach ill have a loweest curr num and a highest diff
+        lookp thru the input arr
+        each iteerattion we check if the difference between right number and left 
+        is greater than our current highest diff
+        and also check if there is a new lowest num reassign it
+        eventually youre left with the highest diff and return it
+    This is how itll look as we loop
+    [2,8,1,8,6,9]; // [6,2] [6,1] [7,1] [7,1] [8,1]
+    [2,8,1,3,9,5]; // [6,2] [6,1] [6,1] [8,1] [8,1]
 }
  */
 
 /*  PSUEDO | 1st attempt
- 
+        created a highest diff var and a lowest num var
+        looped thru input arr checking if 
+        curr el iis less than lowest then reassing it
+        also check if curr el minus lowest num
+        Is greater than highest diff
+        Then reassing hghest diff 
 */
+
+
+const array = [2,1,8,6,3,9]
+//  time complexity is O(n) | space complexity is O(1),
+const stockPrices = (arr) => {
+    let highestDiff = 0;
+    let lowestNum = Infinity;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] < lowestNum) lowestNum = arr[i];
+        if (arr[i] - lowestNum > highestDiff) highestDiff = arr[i] - lowestNum;
+    }
+    return highestDiff;
+}
+
+
+/////////////////////////////////////////////////////////////////////
+/* Algo God Approach
+    This is how Zack the Free Man didit.
+    Looks like he declared a max var and the currr lowest var
+    Loops thru thee array and checks if curr is greaterr than lowest
+    If so then subtract the lowest num by curr el store as profit
+    Then reassign the max to greater of curr max and cuurr profit
+    Else the lowest num is reassigned to curr el
+    This is interesting ill have to come back to this
+*/
+
+// O(n) time | O(1) space where n is length of prices array
+const maxProfit = (prices) => {
+    // declare max and current min variables
+    let max = 0;
+    let minPrice = prices[0];
+    // loop through prices
+    for (let i = 1; i < prices.length; i++) {
+      // check if current price is greater than minPrice
+      if (prices[i] > minPrice) {
+        // calculate profit and update max
+        const profit = prices[i] - minPrice;
+        max = Math.max(max, profit);
+      } else {
+        // update minPrice
+        minPrice = prices[i];
+      }
+    }
+    return max;
+  };
+  
+  console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+  
