@@ -26,32 +26,39 @@ Explanation: 4 boats (3), (3), (4), (5)
         Wherre the key is the curr num and value is limit - curr
 }
 
+Input: people = [3,2,2,1,3,2,2,1,1], limit = 3
+Boats: 6
+Explanation: (3)(3)(2,1)(2,1)(2,1)(2)
 
-{
+Input: people = [3,5,3,4], limit = 5
+Boats: 4
+Explanation: (3)(3)(4)(5)
+
+[1,3,2,2,8,6,7] (10) = [9,7,8,8,2,4,3]
+1,2,2,3,6,7,8] [6] = []
+*/
+
+const array1 = [3,2,2,1,3,2,2,1,1];
+const array2 = [3,5,3,4];
+
+const boats = (array, limit) => {
+    array.sort((a, b) => a - b);
+    let front = 0;
+    let back = array.length - 1;
+    let count = 0;
+    while (front <= back) {
+      const remaining = limit - array[r];
+      back--;
+      count++;
+      if (remaining >= array[front] && front <= back) {
+        front++;
+      }
+    }
+    return count;
 
 }
 
+console.log(boats(array1, 10))
+// console.log(boats(array2, 5))
 
 
-
-Input: people = [3,2,2,1,3,2,2,1], limit = 3
-Output: 3
-Explanation: 3 boats (1, 2), (2) and (3)
-
-Input: people = [3,5,3,4], limit = 5
-Output: 4
-Explanation: 4 boats (3), (3), (4), (5)
-
-
-
-
-
-
-*/ 
-                {
-                        1: 9, 3: 7, 2: 8, 2: 8, 8: 2, 6: 4, 7: 3,
-                }
-
-// vv []
-// [1,3,2,2,8,6,7] (10) = [9,7,8,8,2,4,3]
-// [1,2,2,3,6,7,8] [6] = []
