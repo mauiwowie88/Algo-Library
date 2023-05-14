@@ -1,7 +1,4 @@
 /* 
-You are given an array people where people[i] is the weight of the ith person, and an infinite number of boats where each boat can carry a maximum weight of limit. Each boat carries at most two people at the same time, provided the sum of the weight of those people is at most limit.
-
-Return the minimum number of boats to carry every given person.
 
  Input: people = [1,2], limit = 3
 Output: 1
@@ -16,6 +13,7 @@ Output: 4
 Explanation: 4 boats (3), (3), (4), (5)
 
 -Approaches: {
+    [hash map, greedy approach, two pointers]
     1. My understading is well bee given an array and an input numberr
         The array holds thee wieght of each perrson and 
         The input number is the weight limit of each boat
@@ -61,4 +59,21 @@ const boats = (array, limit) => {
 console.log(boats(array1, 10))
 // console.log(boats(array2, 5))
 
+
+const boats2 = (array, limit) => {
+    array.sort((a, b) => a - b);
+    let front = 0;
+    let back = array.length - 1;
+    let count = 0;
+    while (front <= back) {
+      const remaining = limit - array[r];
+      back--;
+      count++;
+      if (remaining >= array[front] && front <= back) {
+        front++;
+      }
+    }
+    return count;
+
+}
 
