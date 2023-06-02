@@ -46,15 +46,14 @@ const mostProfit = (arr) => {
     return profit;
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /* Algo God Approach
     This is how Zack the Free Man didit.
-    Looks like he did it the same way 
+
 */
-/*
-Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
-Total profit is 4.
- */
+
 
 // Approach: Peak/Valley
 // O(n) time | O(1) space

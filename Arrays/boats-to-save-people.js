@@ -61,23 +61,13 @@ const boats = (array, limit) => {
 }
 
 console.log(boats(array1, 10))
-// console.log(boats(array2, 5))
 
 
-const boats2 = (array, limit) => {
-    array.sort((a, b) => a - b);
-    let front = 0;
-    let back = array.length - 1;
-    let count = 0;
-    while (front <= back) {
-      const remaining = limit - array[r];
-      back--;
-      count++;
-      if (remaining >= array[front] && front <= back) {
-        front++;
-      }
-    }
-    return count;
 
-}
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* Algo God Approach
+    This is how Zack the Free Man didit.
+
+*/

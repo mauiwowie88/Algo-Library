@@ -21,3 +21,26 @@ Explanation: The array ans is formed as follows:
 2nd: [];
 3rd: [];
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* Algo God Approach
+    This is how Zack the Free Man didit.
+
+*/
