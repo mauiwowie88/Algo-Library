@@ -30,7 +30,11 @@ Ex:
         And check if curr num is less than next number
         If so add difference to profit
 }
- */
+
+1st: [];
+2nd: [];
+3rd: [];
+*/
 
 const array = [1,7,8,3,6,4];
 
@@ -42,7 +46,7 @@ const mostProfit = (arr) => {
     return profit;
 }
 
-/////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
 /* Algo God Approach
     This is how Zack the Free Man didit.
     Looks like he did it the same way 
