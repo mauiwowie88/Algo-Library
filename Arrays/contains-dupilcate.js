@@ -7,5 +7,9 @@ Output: true
 
 Input: nums = [1,2,3,4]
 Output: false
+
+1st: [];
+2nd: [];
+3rd: [];
 */
  

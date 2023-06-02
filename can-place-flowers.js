@@ -9,4 +9,8 @@ Output: true
 Input: flowerbed = [1,0,0,0,1], n = 2
 Output: false
 
+
+1st: [];
+2nd: [];
+3rd: [];
 */
