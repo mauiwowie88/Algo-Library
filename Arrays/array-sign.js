@@ -20,26 +20,24 @@ Input: nums = [-1,1,-1,1,-1]
 Output: -1
 Explanation: The product of all values in the array is -1, and signFunc(-1) = -1
 
-
-1st: [
-    Easily looped thru the array multiplying everythng together and return 
-];
-2nd: [];
-3rd: [];
-
 */
 
 const array = [-1,-2,-3,-4,3,2,1];
 const array2 = [1,5,0,2,-3];
 const array3 = [-1,1,-1,1,-1];
 
-
+// 1st attempt: time complexity O(n) | space complexity 0(1)
 function signFunc(x) {
+    // Initialize product / output to 1
     let product = 1;
+    // Initialize a for loop
     for (const num of x) {
+        // If num ever = 0 return 0
         if (num === 0) return 0
+        // Else just multiply curr num to product
         product *= num;
     }
+    // Once done looping return product
     return product < 0 ? -1 : 1;
 }
 

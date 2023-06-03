@@ -12,18 +12,16 @@ Input: salary = [1000,2000,3000]
 Output: 2000.00000
 Explanation: Minimum salary and maximum salary are 1000 and 3000 respectively.
 Average salary excluding minimum and maximum salary is (2000) / 1 = 2000
-
-
-1st: [
-    we could screte a var that is thee arrat sorted with the first and last el removed
-    loop trhu it multiplyiing everything then divde by length at the end of loop
-]
  */
 
 
+// 1st attempt: time O(n log n) | space O(n)
 function averageSalary(arr) {
+    // Store a copy of the array sorted with the first and last el removed.
     const copy = arr.sort().slice(1,arr.length-1);
+    // Using reduce, loop thru the copy array multiplying every num in array together and store in a var
     const product = copy.reduce((a, c) => a + c, 0);
+    // return the product / 2
     return product / 2;
 }
 

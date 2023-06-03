@@ -6,42 +6,38 @@ output = [8, 40, 10, 20];
 
 Approaches: [nested loop,];
 
-1st: [
-   *** we have a nested loop making this O(n^2) space 0(n)***
-  I looped thru the arr 
-  And on each iteration i spliced everything before and after curr el
-  And put each array in a new array
-  Then looped thru the new array reducinig each array
-  Each time we reduce we multiply all the numbeers
-  As we fill oour output arr with the product of each array
-];
-
-2nd: [
-  This approach we multiply every number in the input arr and store in a var
-  We then loop trhu the input array
-  And we reassign each num to the product divided by current number
-];
-
-3rd: [];
 */
 
 const array = [5, 1, 4, 2];
 
+// 1st atempt: time O(n^2) | space 0(n)
 const arrayOfProducts = (arr) => {
-    const output = [];
-    for (let i = 0; i < arr.length; i++) {
-        const firstHalf = arr.slice(0, i);
-        const secondHalf = arr.slice(i + 1, arr.length);
-        const fullArr = [...firstHalf, ...secondHalf]
-        const product = fullArr.reduce((total, num) => total * num, 1)
-        output.push(product);
-    }
-    return output;
+  // declare our output
+  const output = [];
+  // initiate a for loop
+  for (let i = 0; i < arr.length; i++) {
+      // store everythiing before curr num in a var
+      const firstHalf = arr.slice(0, i);
+      // store everything after curr num in a var
+      const secondHalf = arr.slice(i + 1, arr.length);
+      // store in a var the two arrays concated; withtout curr num
+      const fullArr = firstHalf.concat(secondHalf);
+      // using reduce, looped thru fullArr multiplying everything but curr num
+      const product = fullArr.reduce((total, num) => total * num, 1)
+      // and push into output the product of every num except curr 
+      output.push(product);
+  }
+  // return output
+  return output;
 }
 
+// 2nd attempt: time O(n) | space 0(1)
 const arrayOfProducts2 = (arr) => {
+    // Loop thru arr and multiply everything together store in a var
     const product = arr.reduce((total, num) => total * num, 1)
+    // Loop trhu arr reassigning each curr num to : product / currNum
     arr.forEach((num, i) => arr[i] = product / num);
+    // return updated array
     return arr;
 }
 

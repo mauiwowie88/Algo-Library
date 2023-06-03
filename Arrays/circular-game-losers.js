@@ -55,3 +55,23 @@ Explanation: The game goes as follows:
     This is how Zack the Free Man didit.
 
 */
+
+// O(n) time | O(n) space
+const circularGameLosers = (n, k) => {
+    const visited = new Set([1]);
+    let idx = 1;
+    let count = 1;
+    while (true) {
+      const nextIdx = (idx + count * k) % n === 0 ? n : (idx + count * k) % n;
+      if (visited.has(nextIdx)) break;
+      visited.add(nextIdx);
+      idx = nextIdx;
+      count++;
+    }
+  
+    const output = [];
+    for (let i = 1; i <= n; i++) {
+      if (!visited.has(i)) output.push(i);
+    }
+    return output;
+  };

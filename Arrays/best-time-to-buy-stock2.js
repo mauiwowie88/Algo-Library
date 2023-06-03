@@ -24,20 +24,10 @@ Ex:
 [1,7,8,3,6,4] 10
 [7,6,5,3,6,4] 3
 
--Approaches: {
-    1. My initial thiinking is createe a profit var
-        then wee loop thru the arr
-        And check if curr num is less than next number
-        If so add difference to profit
-}
-
-1st: [];
-2nd: [];
-3rd: [];
 */
 
 const array = [1,7,8,3,6,4];
-
+// 1st attempt: time O(n) | space O(1)
 const mostProfit = (arr) => {
     let profit = 0;
     for (let i = 0; i < arr.length; i++) {
