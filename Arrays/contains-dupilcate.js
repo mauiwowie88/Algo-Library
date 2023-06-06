@@ -12,13 +12,13 @@ Output: false
 // 1st attempt: time O(n) | space O(k)
 const contains = (arr)  => {
     // Store previous array elements to check for duplicates
-    const obj = {};
+    const cache = {};
     // Initiate for loop
     for (const num of arr) {
         // Check wether the curr  num has already been created
-        if (obj[num]) return  true;
+        if (cache[num]) return  true;
         // Else create key and value
-        obj[num] = true;
+        cache[num] = true;
     }
     // If you reach thiis far return false;
     return false;

@@ -36,7 +36,7 @@ const checkAllCases = (arr, indexDiff, valueDiff) => {
             if (i !== j && iDiff <= indexDiff && vDiff <= valueDiff) return true;
         }
     }
-    // If finished the loop return false 
+    // Once loop is finished return false 
    return false;
 }
 

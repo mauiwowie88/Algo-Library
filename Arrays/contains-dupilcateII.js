@@ -16,23 +16,23 @@ const nums = [1,2,3,1];
 
 // 1st attempt: time O(n) | space O(n)
 const contains = (arr, num) => {
-    // Create object to store each num in array and its index
-    const obj = {};
+    // Create cacheect to store each num in array and its index
+    const cache = {};
     // Initiate for loop
     for (let i = 0; i < arr.length; i++) {
         // Store current num 
         const curr = arr[i];
-        // Check if obj already has curr num store
-        if (obj[curr]) {
-            // If so push another index value to obj[curr] array
-            obj[curr].push(i);
-            // Create aa var storing the diff between the first and last el in obj[curr] array
-            const diff = Math.abs(obj[curr][obj[curr].length - 1], obj[curr][0]);
+        // Check if cache already has curr num store
+        if (cache[curr]) {
+            // If so push another index value to cache[curr] array
+            cache[curr].push(i);
+            // Create aa var storing the diff between the first and last el in cache[curr] array
+            const diff = Math.abs(cache[curr][cache[curr].length - 1], cache[curr][0]);
             // If the diff is less than or equal to input num return true;
             if (diff >= num) return true;
         } 
-        // If curr num doesnt exist in obj add it with its index in an array
-        else obj[curr] = [i];
+        // If curr num doesnt exist in cache add it with its index in an array
+        else cache[curr] = [i];
     }
     // If you finish the for loop; conditions were never met, return false;
     return false;
