@@ -26,7 +26,50 @@ Input: students = [1,1,1,0,0,1], sandwiches = [1,0,0,0,1,1]
 Output: 3
  */
 
+// 1st attempt: time O(n) | space O(n)
+const schoolLunch = (students, sandwiches) => {
+  // Queue that keeps track of student preferred types
+  const queue = {};
+  // Store all leftOvers for output
+  let leftOvers = 0;
+  // Loop thru the students to create our queue of {circle:?, square:?}
+  for (const type of students) {
+      // Check if queue[type] already exists; if so ++
+      if (queue[type]) queue[type]++;
+      // Else create and initialize to 1
+      else queue[type] = 1;
+  }
+  // Loop thru sandwhiches trying to give them all away
+  for (const type of sandwiches) {
+      // Check if queue[type] value is > 0; if so --
+      if (queue[type] > 0) queue[type]--; 
+  }
+  // Loop thru keys in queue to add all the leftOver sandwhiches
+  for (const keys in queue) {
+      // Add each types leftOvers to leftOvers
+      leftOvers += queue[keys];
+  }
+  // Once complete return
+  return leftOvers;
+}
 
+// 2nd atttempt: timie O(n) | space O(n)
+const lunchTime = (students, sandwiches) => {
+  // Var to keep track of student types; count[0] == circular && count[1] == squared
+  const count = [0, 0];
+  // Loop thru students
+  for (const student of students) {
+    // Increment the count for the student's preferred sandwich type
+    count[student]++; 
+  }
+  // Loop trhu sandwhiches
+  for (const sandwich of sandwiches) {
+    // Check if count[sandwhich] value is > 0; if so --
+      if (count[sandwich] > 0) count[sandwich]--; 
+  }
+  // Return the sum of remaining counts as the number of students unable to eat
+  return count[0] + count[1]; 
+};
 
 
 
