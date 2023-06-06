@@ -22,9 +22,24 @@ Explanation: After trying all the possible pairs (i, j), we cannot satisfy the t
 
 */
 
+// 1st attempt: time O(n^2) | space O(1)
+const checkAllCases = (arr, indexDiff, valueDiff) => {
+    // Initialing the outer for loop, that loops once thru arr
+    for (let i = 0; i < arr.length; i++) {
+        // Initialing the inner for loop, that loops thru arr on each index
+        for (let j = 0; j < arr.length; j++) {
+            // Store the diff between i , j in a var
+            const iDiff = Math.abs(i - j);
+            // Sore the value diff between arr[i] , arr[j]
+            const vDiff = Math.abs(arr[i] - arr[j]);
+            // Check if all the conditions are true; if so return true
+            if (i !== j && iDiff <= indexDiff && vDiff <= valueDiff) return true;
+        }
+    }
+    // If finished the loop return false 
+   return false;
+}
 
-const array = [1, 2, 3, 4, 5];
-const object = Object.assign({}, ...Array.from(array, (num) => ({ [num]: (object[num] || 0) + 1 })));
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -9,7 +9,7 @@ Input: nums = [1,2,3,4]
 Output: false
 */
  
-// 1st attemt: time O(n) | space O(k)
+// 1st attempt: time O(n) | space O(k)
 const contains = (arr)  => {
     // Store previous array elements to check for duplicates
     const obj = {};

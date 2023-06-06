@@ -14,18 +14,27 @@ Output: false
 
 const nums = [1,2,3,1];
 
-const contains = (arr, k) => {
+// 1st attempt: time O(n) | space O(n)
+const contains = (arr, num) => {
+    // Create object to store each num in array and its index
     const obj = {};
+    // Initiate for loop
     for (let i = 0; i < arr.length; i++) {
+        // Store current num 
         const curr = arr[i];
+        // Check if obj already has curr num store
         if (obj[curr]) {
+            // If so push another index value to obj[curr] array
             obj[curr].push(i);
-            const diff = [obj[curr][0], obj[curr][obj[curr].length - 1]]
-            if (diff[diff.length-1] >= k) return true;
+            // Create aa var storing the diff between the first and last el in obj[curr] array
+            const diff = Math.abs(obj[curr][obj[curr].length - 1], obj[curr][0]);
+            // If the diff is less than or equal to input num return true;
+            if (diff >= num) return true;
         } 
+        // If curr num doesnt exist in obj add it with its index in an array
         else obj[curr] = [i];
-
     }
+    // If you finish the for loop; conditions were never met, return false;
     return false;
 }
 
