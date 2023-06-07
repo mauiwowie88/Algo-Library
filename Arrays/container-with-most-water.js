@@ -32,14 +32,7 @@ Output: 1
 */
 
 
-
-
-
-
-
-
-
-
+// Well come back dont understand the question
 
 
 
