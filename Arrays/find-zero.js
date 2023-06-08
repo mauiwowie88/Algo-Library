@@ -25,6 +25,21 @@ const zero = (arr, i) => {
   return false;
 };
 
+const zero2 = (arr, i) => {
+  const cache = {};
+
+  const recurse = (arr, i) => {
+      const curr = arr[i];
+      if (curr === 0) return true;
+      cache[i] = 0;
+      
+      console.log(cache)
+      return recurse(arr, ++i)
+  };
+
+  return recurse(arr, i);
+};
+
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
