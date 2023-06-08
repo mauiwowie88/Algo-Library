@@ -5,6 +5,15 @@ ex: [1,5,4,3,6,2,4,7] should return 4
 */
 
 
+// 1st attempt: time O(n) | space O(n)
+const duplicate = (arr) => {
+  const cache = {};
+  for (const num of arr) {
+      if (cache[num]) return num;
+      else cache[num] = num;
+  }
+}
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -11,6 +11,21 @@ output => false
 */
 
 
+const zero = (arr, i) => {
+  const curr = arr[i];
+  const front = arr[i + curr] === 0 ? 0 : arr[i + curr];
+  const back = arr[i - curr] === 0 ? 0 : arr[i - curr];
+
+  if (front === 0 || back === 0) return true;
+
+  console.log(front, back)
+  // if (front) return findZero(arr, i + curr);
+  // if (back) return findZero(arr, i - curr);
+
+  return false;
+};
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
