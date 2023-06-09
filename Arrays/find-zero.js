@@ -12,32 +12,29 @@ output => false
 
 
 const zero = (arr, i) => {
-  const curr = arr[i];
-  const front = arr[i + curr] === 0 ? 0 : arr[i + curr];
-  const back = arr[i - curr] === 0 ? 0 : arr[i - curr];
-
-  if (front === 0 || back === 0) return true;
-
-  console.log(front, back)
-  // if (front) return findZero(arr, i + curr);
-  // if (back) return findZero(arr, i - curr);
-
-  return false;
-};
-
-const zero2 = (arr, i) => {
-  const cache = {};
-
+  // Using Set to store indeces in an object with no repeating indeces
+  const visited = new Set();
+  // This is our recursive function, using closure to keep track of visited
   const recurse = (arr, i) => {
+      // Check if visited has i already stored; If so return false
+      if (visited.has(i)) return false;
+      // Add curr i to visited obj
+      visited.add(i);
+      // Store curr arr i value
       const curr = arr[i];
+      // Check if curr === 0; If so return true
       if (curr === 0) return true;
-      cache[i] = 0;
-      
-      console.log(cache)
-      return recurse(arr, ++i)
+      // Checks if i + curr < arr.length && recursivly calling until we find 0; Then return true
+      if (i + curr < arr.length && recurse(arr, i + curr)) return true;
+      // Checks if i - curr >= 0 && recursivly calling until we find 0; Then return true
+      if (i - curr >= 0 && recurse(arr, i - curr)) return true; 
+      // If all fails return false;
+      return false;
   };
+  
   return recurse(arr, i);
 };
+
 
 
 
