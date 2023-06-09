@@ -31,7 +31,7 @@ const zero = (arr, i) => {
       // If all fails return false;
       return false;
   };
-  
+  // Invoke recursion
   return recurse(arr, i);
 };
 
