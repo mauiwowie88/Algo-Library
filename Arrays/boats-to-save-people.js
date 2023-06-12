@@ -39,7 +39,6 @@ const boats = (array, limit) => {
     return count;
 }
 
-console.log(boats(array1, 10))
 
 
 

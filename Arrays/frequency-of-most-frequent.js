@@ -52,3 +52,4 @@ const maxFrequency = (nums, k) => {
     }
     return maxFreq;
   };
+  

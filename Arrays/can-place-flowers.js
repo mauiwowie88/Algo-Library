@@ -30,7 +30,6 @@ function flowerBed(arr, num) {
     return total === num;
 }
 
-console.log(flowerBed(array))
 
 
 

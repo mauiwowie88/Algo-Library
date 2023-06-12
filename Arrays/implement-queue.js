@@ -16,6 +16,35 @@ Depending on your language, the stack may not be supported natively. You may sim
 
 
 
+
+class Queue {
+  constructor() {
+    this.stack1 = [];
+    this.stack2 = []; 
+  }
+  push(num) {
+    this.stack1.push(num)
+    return this.stack1;
+  }
+  pop() {
+    if (!this.stack1[0]) return 'Stack is empty';
+    const first = this.stack1.shift();
+    this.stack2.push(first);
+    return first;
+  }
+
+  peek() {
+    return this.stack1[0];
+  }
+
+  empty() {
+      if (!this.stack1.length && !this.stack2.length) return true;
+  }
+}
+
+
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 

@@ -28,7 +28,7 @@ function concat(arr) {
     return Array(2).fill(arr).flat();
 }
 
-console.log(concat(nums))
+
 
 
 
