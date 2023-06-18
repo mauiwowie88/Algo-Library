@@ -13,14 +13,31 @@ Explanation: [9,4] is also accepted.
 
 
 const intersected = (arr1, arr2) => {
-  const sorted1 = arr1.sort((a,b) => a-b);
-  const sorted2 = arr2.sort((a,b) => a-b);
-  let curr1 = 0;
-  let curr2 = 0;
-  while(curr1 < sorted1.length && curr2 < sorted2.length) {
-  
+  // Cache to quickly compare arrays
+  const cache = {}
+  // To store output
+  const output = []
+  // Method to populate the cache with input arr
+  const populateCache = (arr) => {
+    for (const num of arr) {
+        if (cache[num]) cache[num]++
+        else cache[num] = 1
+    }
   }
-
+  // Method to compare the cache with input arr
+  const compareArrays = (arr) => {
+    for (const num of arr) {
+        if (cache[num]) {
+            output.push(num)
+            cache[num]--
+        }
+    }
+  }
+  // Populate the cache with first arr
+  populateCache(arr1)
+  // Loop thru second array comparing to cache
+  compareArrays(arr2)
+  return output
 }
 
 
