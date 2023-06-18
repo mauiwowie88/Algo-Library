@@ -17,6 +17,14 @@ Explanation: There is no mountain.
 
  */
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/* Algo God Approach
+    This is how Zack the Free Man didit.
+*/
+
+
 // O(n) time | O(1) space
 const longestMountain = (arr) => {
     let max = 0;

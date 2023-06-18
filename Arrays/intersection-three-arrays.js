@@ -10,6 +10,46 @@ Output: []
 
 */
 
+// 1st attempt
+const allThree = (arr1, arr2, arr3) => {
+  const cache = {}
+  const output = []
+  const all = [arr1, arr2, arr3]
+  const checker = (arr) => {
+      for (const num of arr) {
+          if (cache[num]) cache[num]++
+          else cache[num] = 1
+      }
+  }
+  all.map(arr => checker(arr))
+  for (const num in cache) {
+      if (cache[num] >= 3) output.push(Number(num))
+  }
+  return output
+}
+
+// 2nd attempt
+const all3 = (arr1, arr2, arr3) => {
+  const cache = {}
+  const output = []
+  arr1.map(num => cache[num] = 1)
+  arr2.map(num => cache[num] ? cache[num]++ : cache[num] = 1)
+  arr3.map(num => cache[num] ? cache[num]++ : cache[num] = 1)
+  for (const num in cache) {
+      if (cache[num] >= 3) output.push(Number(num))
+  }
+  return output
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/* Algo God Approach
+    This is how Zack the Free Man didit.
+*/
+
+
 // O(n) time | O(1) space
 const arraysIntersection = (arr1, arr2, arr3) => {
     const output = [];

@@ -13,4 +13,12 @@ Explanation: The missing positive integers are [5,6,7,...]. The 2nd missing posi
 
 */
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/* Algo God Approach
+    This is how Zack the Free Man didit.
+*/
+
+
 const findKthPositive = (arr, k) => {};

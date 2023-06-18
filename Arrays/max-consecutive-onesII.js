@@ -17,6 +17,14 @@ The max number of consecutive ones is 4.
 
 */
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/* Algo God Approach
+    This is how Zack the Free Man didit.
+*/
+
+
 // Approach: Sliding Window
 // O(n) time | O(1) space
 const findMaxConsecutiveOnes = (nums) => {

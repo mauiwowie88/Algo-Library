@@ -10,8 +10,7 @@ Output: [4,9]
 Explanation: [9,4] is also accepted.
  */
 
-
-
+// 1st attempt: time O(n + m) | space O(n)
 const intersected = (arr1, arr2) => {
   // Cache to quickly compare arrays
   const cache = {}
