@@ -50,35 +50,47 @@ const missing = (arr, num) => {
 const findKthPositive = (arr, k) => {};
 
 
-
-
-
+/*
 class Node {
     constructor(value) {
-        this.value = null;
-        this.left = null;
+        this.value = value;
         this.right = null;
-        if (!isNaN(value)) this.treeFromNum(value);
-        if (Array.isArray(value)) this.treeFromArr(value);
-        
-      }
-      treeFromNum(num) {
-        if (!this.value) this.value = num;
-        if (num < this.value) {
-            if (!this.left) this.left = new Node(this.value);
+        this.left = null;
+    }
+}
 
+
+
+class BTS {
+    constructor() {
+        this.root = null;
+    }
+    addNum(num) {
+        const newNode = new Node(num);
+        console.log(this.root)
+        if (!this.root) {
+            this.root = newNode;
+            return this.root;
+        }
+        if (num > this.root.value) {
+            if (!this.root.right) {
+                this.root.right = newNode;
+                return this.root;
+            } else {
+                this.root = this.right;
+                return this.addNum(num)
+            }
         } else {
-            if (!this.right) this.left = new Node();
 
         }
-        return this
-      }
-      treeFromArr(num) {
-        if (!this.value) this.value = num;
-        return this
-      }
-      insert(value) {
-        if (!isNaN(value)) this.treeFromNum(value);
-        if (Array.isArray(value)) this.treeFromArr(value);
-      }
+        return this;
+    }
+    addArr(arr) {
+        console.log('something')
+    }
 }
+
+*/
+
+
+
