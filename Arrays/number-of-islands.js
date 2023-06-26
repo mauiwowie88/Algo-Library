@@ -75,6 +75,7 @@ const numIslands = (grid) => {
         // Return boolean whether island has a size.
         return islandSize > 0;
     }
+    
     // Method loops thru grid counting islands.
     const countIslands = (grid) => {
         // Create a copy grid to keep track of visited.
@@ -98,7 +99,6 @@ const numIslands = (grid) => {
 
 // 2nd attempt: |
 const islandNums = (grid) => {
-
     const dfs = (i, j, grid) => {
         // Check if current position is out of bounds or is not an island; if so return.
         if (i < 0 || j < 0 || 
@@ -129,3 +129,40 @@ const islandNums = (grid) => {
     return countIslands(); // Invoke countIslands to get begin counting islands.
 }
 
+// 3rd attempt:
+const inslandCounter = (grid) => {
+    // Var keeping track of islands
+    let islandCount= 0;
+    // Loop thru all the arrays in arr
+    for (let i = 0; i < grid.length; i++) {
+        // Loop thru each array individually
+        for (let j = 0; j < grid[i].length; j++) {
+            // Check if curr position in grid === '1'
+            if (grid[i][j] === '1') {
+                // Increment count
+                islandCount++;
+                // Invoke our helper func that checks everything around
+                teraform(i, j, grid);
+            }
+        }
+    }
+    // Once done with the nested loops return islandCount
+    return islandCount;
+}
+
+// Teraform is a func that recursively calls itself 
+// Checking everything around converting visited to water
+const teraform = (rowI, colI, grid) => {
+    // If a grid or column is undefined break out or if curr val is water
+    if (grid[rowI] === undefined || grid[rowI][colI] === undefined || grid[rowI][colI] === '0') return;
+    // Convert curr position to water; visited
+    grid[rowI][colI] = '0';
+    // Convert everything to the left to water
+    teraform(rowI - 1, colI, grid);
+    // Convert everything to the right to water
+    teraform(rowI + 1, colI, grid);
+    // Convert everything below to water
+    teraform(rowI, colI - 1, grid);
+    // Convert everything above to water
+    teraform(rowI, colI + 1, grid);
+}
