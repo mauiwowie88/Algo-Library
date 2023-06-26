@@ -17,21 +17,21 @@ const genP = (n) => {
     const stack = [];
     const res = [];
 
-    const recurse = (oN, cN) => {
-      if (oN === cN && oN === n) {
+    const recurse = (open, close) => {
+      if (open === close && open === n) {
         res.push(stack.join(""));
         return;
       }
 
-      if (oN < n) {
+      if (open < n) {
         stack.push("(");
-        recurse(oN + 1, cN);
+        recurse(open + 1, close);
         stack.pop();
       }
 
-      if (cN < oN) {
+      if (close < open) {
         stack.push(")");
-        recurse(oN, cN + 1);
+        recurse(open, close + 1);
         stack.pop();
       }
     };
@@ -51,4 +51,23 @@ const gen = (n)=> {
     }
     recurse(n,n,'');
     return solution;
+}
+
+
+// 3rd attempt:
+const generate = (num) => {
+  const answer = [];
+
+  const backtracking = (open, close, str) => {
+      if (open === close && open === num) {
+          answer.push(str);
+          return;
+      }
+      if (open <  num) backtracking(open +1, close, str + '(');
+      if (open > close) backtracking(open, close +1, str + ')');
   }
+  
+  backtracking(0,0,'');
+  return answer;
+}
+
