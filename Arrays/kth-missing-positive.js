@@ -50,47 +50,63 @@ const missing = (arr, num) => {
 const findKthPositive = (arr, k) => {};
 
 
-/*
+/**
+ 
+
 class Node {
     constructor(value) {
-        this.value = value;
-        this.right = null;
-        this.left = null;
+      this.value = value || null;
+      this.right = null;
+      this.left = null;
     }
-}
-
-
-
-class BTS {
+  }
+  
+  class BTS {
     constructor() {
-        this.root = null;
+      this.root = null;
     }
+  
+    insert(val) {
+      if (!isNaN(val)) {
+        return this.addNum(val);
+      }
+      if (Array.isArray(val)) {
+        return this.addArr(val);
+      }
+      if (typeof val === 'string') {
+        return this.addStr(val);
+      }
+    }
+
     addNum(num) {
-        const newNode = new Node(num);
-        console.log(this.root)
-        if (!this.root) {
-            this.root = newNode;
-            return this.root;
-        }
-        if (num > this.root.value) {
-            if (!this.root.right) {
-                this.root.right = newNode;
-                return this.root;
-            } else {
-                this.root = this.right;
-                return this.addNum(num)
-            }
-        } else {
-
-        }
-        return this;
+        const insertNode = (node, value) => {
+          if (value < node.value) {
+            if (node.left === null) node.left = new Node(value);
+            else return insertNode(node.left, value);
+          } else if (value > node.value) {
+            if (node.right === null) node.right = new Node(value);
+            else insertNode(node.right, value);
+          } else return;
+        };
+      
+        if (!this.root) this.root = new Node(num);
+        else insertNode(this.root, num);
     }
+      
+
     addArr(arr) {
-        console.log('something')
+      for (const val of arr) {
+        this.insert(val);
+      }
     }
-}
-
-*/
+  
+    addStr(str) {
+      // Implement the logic to add string values to the tree
+      console.log('Adding string:', str);
+    }
+  }
+  
+ */
 
 
 
