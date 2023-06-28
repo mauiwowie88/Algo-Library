@@ -6,11 +6,38 @@ contains correctly matched brackets.
 You may assume the string contains only characters: ( ) [ ] { }
 */
 
+// 1st attempt: time O(n) | space O(n)
+const befittingBrackets = (str) => {
+  // This queue is to keep track of open brackets in order first in last out
+  const queue = [];
+  // This is so when we see a closing bracket 
+  // We compare its value to the last el in queue
+  const cache = {
+      ')': '(',
+      ']': '[',
+      '}': '{'
+  };
+  // Loop thru our input str
+  for (let i = 0; i < str.length; i++) {
+    // Declare the curr value in str
+      const curr = str[i];
+      // If its a open bracket push it into queue
+      if (curr === '(' || curr === '[' || curr === '{') queue.push(curr)
+      else {
+          // If its closing bracket check if its value in cache !== last el in queue; return false;
+          if (cache[curr] !== queue[queue.length-1]) return false;
+          // If it does match just remove last el
+          else queue.pop();
+      }
+  }
+  // If you finish looping return true
+  return true;
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* Algo God Approach
     This is how Zack the Free Man didit.
-    second one is a better version of what i came up with.
 */
 
 // O(n) time | O(n) space where n is the length of string
