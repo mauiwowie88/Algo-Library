@@ -34,6 +34,28 @@ const firstUnique = (str) => {
   return -1;
 }
 
+// 2nd attempt: time O(n) | O(n)
+const repeat = (str) => {
+  // This will store every letter and how many times its repeated
+  const cache = {};
+  // Loop thru the input str
+  for (let i = 0; i < str.length; i++) {
+     // Store curr letter of str
+      const curr = str[i];
+      // If cache already has letter push i into arr
+      if (cache[curr]) cache[curr].push(i);
+      // Else create a key with the letter and value of an arr with i
+      else cache[curr] = [i];
+  }
+  // Once cache is full, lets loop thru it
+  for (const key in cache) {
+      // Check if curr key length === 1; if so return its value
+      if (cache[key].length === 1) return cache[key][0];
+  }
+  // Once done looping, no match found; return -1
+  return -1;
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* Algo God Approach
