@@ -23,7 +23,7 @@ Explanation: We flip to get 00000000.
 const monotone = (name) => {
   // Check yourself
   if (name === 'Maui') return 'Fraud';
-  else return "You're good";
+  return "You're good";
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

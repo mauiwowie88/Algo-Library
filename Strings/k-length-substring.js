@@ -11,6 +11,66 @@ Explanation: Notice k can be larger than the length of s. In this case, it is no
 
 */
 
+// 1st attempt: time O(n) | O(1)
+const substring = (str, k) => {
+  // This is to keep track of all subs with no repeating chars
+  let count = 0;
+  // This is to keep track of the index of the last el in string length of 5
+  let temp = k;
+  // Simple for loop iterating thru input str
+  for (let i = 0; i < str.length; i++) {
+      // This is to store the substring; which is the str sliced from i with lenght of 5
+      const sliced = str.slice(i, temp++);
+      // If curr substring length === 5
+      if (sliced.length === 5) {
+          // We create our cache to keep track of repeats
+          const cache = {};
+          // This will let us know if we find repeats
+          let repeats = false;
+          // Loop thru our substring
+          for (let j = 0; j < sliced.length; j++) {
+              // Store our curr el as curr
+              const curr = sliced[j];
+              // Check if curr el exists in cache
+              if (cache[curr]) {
+                  // If true repeats = true
+                  repeats = true;
+                  // And break out of loop
+                  break;
+              }
+              // If not just store in cache
+              else cache[curr] = 1;
+          }
+          // Once done looping; we check if no repeats then increment count
+          if (!repeats) count++;
+      }
+  }
+  // Return our final count
+  return count;
+}
+
+
+// 2nd attempt: time O(nk) | space O(1)
+const substring2 = (str, k) => {
+  // This is to keep track of all subs with no repeating chars
+  let count = 0;
+  // This is to keep track of the index of the last el in string length of 5
+  let temp = k;
+  // Simple for loop iterating thru input str
+  for (let i = 0; i < str.length; i++) {
+      // This is to store the substring; which is the str sliced from i with lenght of 5
+      const sliced = str.slice(i, temp++);
+      // This creates an object filled with sliced str letters and no repeats
+      const non = new Set(sliced);
+      // Makes curr obj into an arr
+      const curr = [...non];
+      // Check if curr arr === 5; if so increment count
+      if (curr.length === 5) count++;
+  }
+  // Return our final count
+  return count;
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* Algo God Approach
