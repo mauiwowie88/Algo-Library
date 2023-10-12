@@ -12,16 +12,43 @@ Ex: List1 = a -> b -> c -> d -> e
     List2 = x -> y -> z
     output = a -> x -> b -> y -> c -> z -> d -> e -> null
 */
-const LinkedList = require('./listsOperations');
+const { Node, LinkedList } = require('./listOperations');
+
 const ll = new LinkedList();
-const arr1 = ['a', 'b', 'c', 'd', 'e'];
-const arr2 = ['x', 'y', 'z'];
+const node = new Node();
 
-const list1 = ll.initializeLL(arr1);
-const list2 = ll.initializeLL(arr2);
-
+// 1st attempt: time O(N + M) | space O(1)
 const zipperLists = (head1, head2) => {
+    const dummyNode = node;
+    let tail = dummyNode;
+    let current1 = head1;
+    let current2 = head2;
+    let count = 0;
 
-}
+    while (current1 && current2) {
+        if (count % 2 === 0) {
+            tail.next = current1;
+            current1 = current1.next;
 
-console.log(zipperLists(arr1, arr2));
+        } else {
+            tail.next = current2;
+            current2 = current2.next;
+        }
+        tail = tail.next;
+        count += 1;
+    }
+
+    if (current1) tail.next = current1;
+    if (current2) tail.next = current2;
+
+    return dummyNode.next;
+};
+
+// const arr1 = ['a', 'b', 'c', 'd', 'e'];
+// const arr2 = ['x', 'y', 'z'];
+
+// const list1 = ll.initializeList(arr1);
+// const list2 = ll.initializeList(arr2);
+
+// const zipped = zipperLists(list1.head, list2.head);
+// console.log(ll.printList(zipped));

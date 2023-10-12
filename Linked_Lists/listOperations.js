@@ -7,7 +7,6 @@
  Ex: 1 -> 3 -> 2 -> 6 -> 5 -> null
 */
 
-
 class Node {
     constructor(value, next = null) {
         this.value = value;
@@ -22,7 +21,7 @@ class LinkedList {
         this.size = 0;
     }
 
-    // Insert first node
+    // Insert new node as the head
     insertFirst(value) {
         const node = new Node(value);
         if (!this.head) {
@@ -34,9 +33,9 @@ class LinkedList {
         }
         this.size++;
         return `Inserted ${value} in the beginning.`;
-    }
+    };
 
-    // Insert last node
+    // Insert new node as the tail
     insertLast(value) {
         const node = new Node(value);
         if (!this.head) {
@@ -48,8 +47,9 @@ class LinkedList {
         }
         this.size++;
         return `Inserted ${value} at the end.`;
-    }
-    // Insert at index
+    };
+
+    // Insert new node in specified index
     insertAt(value, index) {
         if (index < 0 || index > this.size) return 'This index is out of range.';
         if (isNaN(index)) return 'Index is not a number';
@@ -72,29 +72,32 @@ class LinkedList {
 
         this.size++;
         return `Inserted ${value} at index ${index}.`;
-    }
+    };
 
-    // Get at index
+    // Retrieve node value in specified index
     getAt(index) {
-        if (index < 0 || index > this.size) return 'This index is out of range.';
+        if (index < 0 || index >= this.size) return 'This index is out of range.';
         if (isNaN(index)) return 'Index is not a number';
         if (index === 0) return this.head.value;
-        if (index === this.size) return this.tail.value;
-
+        if (index === this.size - 1) return this.tail.value
         let curr = this.head;
         let count = 0;
-
         while (count < index) {
             curr = curr.next;
             count++;
         }
         return curr.value;
-    }
+    };
 
-    // Remove at index
+    // Remove node in specified index
     removeAt(index) {
-        if (index < 0 || index > this.size) return 'This index is out of range.';
+        if (index < 0 || index >= this.size) return 'This index is out of range.';
         if (isNaN(index)) return 'Index is not a number';
+        if (index === 0) {
+            this.head = this.head.next;
+            this.size--;
+            return "Removed node at index 0";
+        }
 
         let previousNode = null;
         let currentNode = this.head;
@@ -105,21 +108,23 @@ class LinkedList {
             currentNode = currentNode.next;
             count++;
         }
+
         previousNode.next = currentNode.next;
         this.size--;
-        return `Removed node at index ${index}.`;
-    }
 
-    // Clear list
+        return `Removed node at index ${index}.`;
+    };
+
+    // Delete linked list
     deleteList() {
         this.head = null;
         this.tail = null;
         this.size = 0;
-    }
+    };
 
-    // Create list using an array
-    initializeLL(arr) {
-        if (arr.length === 0) return "Array is empty.";
+    // Create a linked list with input array
+    initializeList(arr) {
+        if (!arr.length) return "Array is empty.";
 
         if (!this.head) {
             this.head = new Node(arr[0]);
@@ -151,10 +156,10 @@ class LinkedList {
             newLL.tail = curr;
             return newLL;
         }
-    }
+    };
 
-    // Print readable list
-    printListData(head) {
+    // Print linked list in readable format
+    printList(head) {
         let curr = head ? head : this.head;
         let str = "";
         while (curr) {
@@ -162,7 +167,8 @@ class LinkedList {
             curr = curr.next;
         }
         return str + curr;
-    }
+    };
 }
 
-module.exports = LinkedList;
+
+module.exports = { Node, LinkedList };
