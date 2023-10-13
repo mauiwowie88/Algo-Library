@@ -11,6 +11,9 @@ You may assume that both input lists are non-empty.
 Ex: List1 = a -> b -> c -> d -> e
     List2 = x -> y -> z
     output = a -> x -> b -> y -> c -> z -> d -> e -> null
+
+Tip: Use ll.initializeList([]) to initialize a Linked List using an array
+     Use ll.printList() to see a readable linked list
 */
 const { Node, LinkedList } = require('./listOperations');
 
@@ -43,12 +46,3 @@ const zipperLists = (head1, head2) => {
 
     return dummyNode.next;
 };
-
-// const arr1 = ['a', 'b', 'c', 'd', 'e'];
-// const arr2 = ['x', 'y', 'z'];
-
-// const list1 = ll.initializeList(arr1);
-// const list2 = ll.initializeList(arr2);
-
-// const zipped = zipperLists(list1.head, list2.head);
-// console.log(ll.printList(zipped));
