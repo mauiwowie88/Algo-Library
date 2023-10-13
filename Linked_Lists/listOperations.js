@@ -2,8 +2,8 @@
  Implement a basic linked list class with insertion and deletion operations. 
  The class should have methods for inserting a node at the beginning, at the end, 
  or at a specified index, as well as retrieving a node's value at a given index, 
- removing a node at a specific index, clearing the entire list, creating a linked
- lists using an array and a method to display the linked lists in a readable format.
+ removing a node at a specific index, clearing the entire list, creating a deep copy, 
+ creating a LL using an array and a method to display the linked lists in a readable format.
  Ex: 1 -> 3 -> 2 -> 6 -> 5 -> null
 */
 
@@ -157,6 +157,24 @@ class LinkedList {
             return newLL;
         }
     };
+
+    deepCopy(head) {
+        let copy = head;
+        let curr = null;
+        let tail = null;
+
+        while (copy) {
+            const newNode = new Node(copy.value);
+
+            if (!curr) curr = newNode;
+            else tail.next = newNode;
+
+            tail = newNode;
+            copy = copy.next;
+        }
+
+        return curr;
+    }
 
     // Print linked list in readable format
     printList(head) {

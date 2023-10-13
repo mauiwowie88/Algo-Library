@@ -18,11 +18,10 @@ Tip: Use ll.initializeList([]) to initialize a Linked List using an array
 const { Node, LinkedList } = require('./listOperations');
 
 const ll = new LinkedList();
-const node = new Node();
 
 // 1st attempt: time O(N + M) | space O(1)
 const zipperLists = (head1, head2) => {
-    const dummyNode = node;
+    const dummyNode = new Node();
     let tail = dummyNode;
     let current1 = head1;
     let current2 = head2;

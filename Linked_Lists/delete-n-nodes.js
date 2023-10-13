@@ -27,27 +27,24 @@ Tip: Use ll.initializeList([]) to initialize a Linked List using an array
 const { LinkedList } = require('./listOperations');
 const ll = new LinkedList();
 
-//1st attempt: time O(n) | space O(1)
 const deleteNNodes = (head, m, n) => {
     let count = 0;
     let curr = head;
     while (curr) {
         count++;
         if (count === m) {
-            let removed = curr.next;
             let checker = 0;
-            while (checker < n && removed) {
+            let tail = curr.next;
+            while (checker < n && tail) {
+                tail = tail.next;
                 checker++;
-                removed = removed.next;
             }
+            curr.next = tail;
             count = 0;
-            curr.next = removed;
         }
         curr = curr.next;
     }
-    return head;
 }
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

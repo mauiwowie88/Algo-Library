@@ -12,11 +12,10 @@ Ex: List1 = 1 -> 3 -> 3 -> 5 -> 5 -> null
 const { Node, LinkedList } = require('./listOperations');
 
 const ll = new LinkedList();
-const node = new Node();
 
 // 1st attempt: time O(N + M) | space O(1)
 const mergeSortedLists = (head1, head2) => {
-  const dummyNode = node;
+  const dummyNode = new Node();;
   let tail = dummyNode;
   let current1 = head1;
   let current2 = head2;
@@ -47,7 +46,7 @@ const mergeSortedLists = (head1, head2) => {
 
 // O(n) time | O(1) space
 const mergeLists = (head1, head2) => {
-  const dummyNode = node;
+  const dummyNode = new Node();;
   let tail = dummyNode;
   let current1 = head1;
   let current2 = head2;
