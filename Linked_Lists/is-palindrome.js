@@ -8,14 +8,18 @@ a <- b <- c   c -> b -> a
 1 -> 0 -> 1
      s    f
 
+  Tip: Use ll.initializeList([]) to initialize a Linked List using an array
+       Use ll.printList() to see a readable linked list
+
  */
 
 const { Node, LinkedList } = require('./listOperations');
 const ll = new LinkedList();
-// 1st attempt: time O(n) | space O(n)
+
+// 1st attempt: time O(n) | space O(1)
 const palindrome = (list) => {
     const head = list.head;
-    const copy = list.deepCopy(head);
+    const copy = head;
     const half = Math.floor(list.size / 2);
     let count = 0;
 
@@ -37,12 +41,7 @@ const palindrome = (list) => {
     }
 
     return true;
-}
-
-// 2nd attempt:
-const palindrome2 = () => {
-
-}
+};
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -51,6 +50,7 @@ const palindrome2 = () => {
 */
 
 // Approach: Reverse the second half of the linked list and determine if palindrome
+
 // O(n) time | O(1) space
 const isPalindrome = (head) => {
     // get the middle of the linked list
@@ -63,21 +63,21 @@ const isPalindrome = (head) => {
 
     // reverse second half
     let prev = null;
-    let copyent = slow;
-    while (copyent) {
-        const next = copyent.next;
-        copyent.next = prev;
-        prev = copyent;
-        copyent = next;
+    let curr = slow;
+    while (curr) {
+        const next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
     }
 
     // traverse at each pointer and check if values are equal
-    let copyent1 = head;
-    let copyent2 = prev;
-    while (copyent2) {
-        if (copyent1.val !== copyent2.val) return false;
-        copyent1 = copyent1.next;
-        copyent2 = copyent2.next;
+    let curr1 = head;
+    let curr2 = prev;
+    while (curr2) {
+        if (curr1.val !== curr2.val) return false;
+        curr1 = curr1.next;
+        curr2 = curr2.next;
     }
 
     return true;
