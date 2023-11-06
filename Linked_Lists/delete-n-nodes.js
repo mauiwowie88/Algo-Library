@@ -23,9 +23,11 @@ Explanation: Head of linked list after removing nodes is returned.
 Tip: Use ll.initializeList([]) to initialize a Linked List using an array
      Use ll.printList() to see a readable linked list
 */
+const operations = require('./listOperations');
+const linkedList = operations();
 
-const { LinkedList } = require('./listOperations');
-const ll = new LinkedList();
+linkedList.insertFirst(4);
+console.log(linkedList)
 
 const deleteNNodes = (head, m, n) => {
     let count = 0;
