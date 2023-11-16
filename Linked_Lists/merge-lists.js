@@ -6,12 +6,44 @@ Ex: List1 = 1 -> 3 -> 3 -> 5 -> 5 -> null
     List2 = -2 -> 4 -> 6 -> 9 -> 10 -> null
     output = -2 -> 1 -> 3 -> 3 -> 4 -> 5 -> 5 -> 6 -> 9 -> 10 -> null
 
-  Tip: Use ll.initializeList([]) to initialize a Linked List using an array
-       Use ll.printList() to see a readable linked list
+  Tip: 
 */
-const { Node, LinkedList } = require('./listOperations');
+const { Node } = require('./LinkedList');
+const ListMethods = require('./ListMethods');
 
-const ll = new LinkedList();
+const list1 = ListMethods.initializeList([1, 3, 3, 5, 5]);
+const list2 = ListMethods.initializeList([2, 4, 6, 9, 10]);
+
+
+const merge = (head1, head2) => {
+  if (!head1) return head2;
+  if (!head2) return head1;
+
+  if (head1.value < head2.value) {
+    head1.next = merge(head1.next, head2);
+    return head1;
+  } else {
+    head2.next = merge(head1, head2.next);
+    return head2;
+  }
+}
+
+console.log(merge(list1.head, list2.head));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // 1st attempt: time O(N + M) | space O(1)
 const mergeSortedLists = (head1, head2) => {
@@ -35,6 +67,15 @@ const mergeSortedLists = (head1, head2) => {
 
   return dummyNode.next;
 };
+
+
+
+
+
+
+
+
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

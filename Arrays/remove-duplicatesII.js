@@ -8,6 +8,7 @@ Return k after placing the final result in the first k slots of nums.
 Do not allocate extra space for another array. You must do this by modifying the input array in-place with O(1) extra memory.
 
 Input: nums = [1,1,1,2,2,3]
+
 Output: 5, nums = [1,1,2,2,3,_]
 Explanation: Your function should return k = 5, with the first five elements of nums being 1, 1, 2, 2 and 3 respectively.
 It does not matter what you leave beyond the returned k (hence they are underscores).
@@ -19,6 +20,24 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 
 */
 
+// 1st attempt: time O(n) | space O(n)
+const removeDups = (arr) => {
+  const cache = {};
+  let x = 0;
+  arr.map(num => cache[num] ? cache[num]++ : cache[num] = 1);
+  for (const key in cache) {
+    let count = 2;
+    while (count && cache[key]) {
+      arr[x++] = Number(key);
+      count--;
+      cache[key]--;
+    }
+  }
+  for (let i = x; i < arr.length; i++) {
+    arr[i] = '_';
+  }
+  return x;
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -47,4 +66,4 @@ const removeDuplicates = (nums) => {
     j++;
   }
   return i;
-};
+}; 

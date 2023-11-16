@@ -1,5 +1,5 @@
 /*
- Implement a class with basic linked list listOperations like insertion and deletion. 
+ Implement a class with basic linked list ListMethods like insertion and deletion. 
  The class should have methods for inserting a node at the beginning, at the end, 
  or at a specified index, as well as retrieving a node's value at a given index, 
  removing a node at a specific index, clearing the entire list, creating a deep copy, 
@@ -7,11 +7,11 @@
  Ex: 1 -> 3 -> 2 -> 6 -> 5 -> null
 */
 
-const { LinkedList, Node } = require("./linked-list");
+const { Node, LinkedList } = require('./LinkedList');
+const ListMethods = new LinkedList();
 
-const listOperations = LinkedList;
 // Insert new node as the head
-listOperations.insertFirst = function (value) {
+ListMethods.insertFirst = function (value) {
     const node = new Node(value);
     if (!this.head) {
         this.head = node;
@@ -24,7 +24,7 @@ listOperations.insertFirst = function (value) {
     return `Inserted ${value} in the beginning.`;
 };
 // Insert new node as the tail
-listOperations.insertLast = function (value) {
+ListMethods.insertLast = function (value) {
     const node = new Node(value);
     if (!this.head) {
         this.head = node;
@@ -37,7 +37,7 @@ listOperations.insertLast = function (value) {
     return `Inserted ${value} at the end.`;
 };
 // Insert new node in specified index
-listOperations.insertAt = function (value, index) {
+ListMethods.insertAt = function (value, index) {
     if (index < 0 || index > this.size) return 'This index is out of range.';
     if (isNaN(index)) return 'Index is not a number';
     if (index === 0) return this.insertFirst(value);
@@ -61,7 +61,7 @@ listOperations.insertAt = function (value, index) {
     return `Inserted ${value} at index ${index}.`;
 };
 // Return value in specified index
-listOperations.getAt = function (index) {
+ListMethods.getAt = function (index) {
     if (index < 0 || index >= this.size) return 'This index is out of range.';
     if (isNaN(index)) return 'Index is not a number';
     if (index === 0) return this.head.value;
@@ -75,7 +75,7 @@ listOperations.getAt = function (index) {
     return curr.value;
 };
 // Remove node in specified index
-listOperations.removeAt = function (index) {
+ListMethods.removeAt = function (index) {
     if (index < 0 || index >= this.size) return 'This index is out of range.';
     if (isNaN(index)) return 'Index is not a number';
     if (index === 0) {
@@ -100,14 +100,14 @@ listOperations.removeAt = function (index) {
 };
 
 // Delete linked list
-listOperations.deleteList = function () {
+ListMethods.deleteList = function () {
     this.head = null;
     this.tail = null;
     this.size = 0;
 };
 
 // Create a linked list with input array
-listOperations.initializeList = function (arr) {
+ListMethods.initializeList = function (arr) {
     if (!arr.length) return "Array is empty.";
 
     if (!this.head) {
@@ -142,7 +142,7 @@ listOperations.initializeList = function (arr) {
     }
 };
 // Create a deep copy 
-listOperations.deepCopy = function (head) {
+ListMethods.deepCopy = function (head) {
     let copy = head;
     let curr = null;
     let tail = null;
@@ -161,7 +161,7 @@ listOperations.deepCopy = function (head) {
 }
 
 // Print linked list in readable format
-listOperations.printList = function (head) {
+ListMethods.printList = function (head) {
     let curr = head ? head : this.head;
     let str = "";
     while (curr) {
@@ -171,9 +171,4 @@ listOperations.printList = function (head) {
     return str + curr;
 };
 
-// const linkedList = new operations();
-
-// linkedList.insertFirst(4);
-console.log('linkedList')
-
-module.exports = listOperations;
+module.exports = ListMethods;

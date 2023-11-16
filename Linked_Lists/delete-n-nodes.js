@@ -23,8 +23,8 @@ Explanation: Head of linked list after removing nodes is returned.
 Tip: Use ll.initializeList([]) to initialize a Linked List using an array
      Use ll.printList() to see a readable linked list
 */
-const operations = require('./listOperations');
-const linkedList = operations();
+const operations = require('./ListMethods');
+const linkedList = new operations();
 
 linkedList.insertFirst(4);
 console.log(linkedList)
