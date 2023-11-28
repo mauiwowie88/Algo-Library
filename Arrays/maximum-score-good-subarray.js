@@ -1,7 +1,8 @@
 /**
  * You are given an array of integers nums (0-indexed) and an integer k.
 
-The score of a subarray (i, j) is defined as min(nums[i], nums[i+1], ..., nums[j]) * (j - i + 1). A good subarray is a subarray where i <= k <= j.
+The score of a subarray (i, j) is defined as min(nums[i], nums[i+1], ..., 
+nums[j]) * (j - i + 1). A good subarray is a subarray where i <= k <= j.
 
 Return the maximum possible score of a good subarray.
 
@@ -13,6 +14,15 @@ Input: nums = [5,5,4,5,4,1,1,1], k = 0
 Output: 20
 Explanation: The optimal subarray is (0, 4) with a score of min(5,5,4,5,4) * (4-0+1) = 4 * 5 = 20.
  */
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/* Algo God Approach
+    This is how Zack the Free Man didit.
+*/
 
 // O(n) time | O(1) space
 const maximumScore = (nums, k) => {
