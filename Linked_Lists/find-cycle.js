@@ -9,17 +9,18 @@ is connected to (0-indexed). It is -1 if there is no cycle. Note that pos is not
 
 Do not modify the linked list.
 
-Input: head = [3,2,0,-4], pos = 1
-Output: tail connects to node index 1
-Explanation: There is a cycle in the linked list, where tail connects to the second node.
-
-Input: head = [1,2], pos = 0
-Output: tail connects to node index 0
-Explanation: There is a cycle in the linked list, where tail connects to the first node.
-
-Input: head = [1], pos = -1
-Output: no cycle
-Explanation: There is no cycle in the linked list.
+Ex 1:
+    Input: head = [3,2,0,-4], pos = 1
+    Output: tail connects to node index 1
+    Explanation: There is a cycle in the linked list, where tail connects to the second node.
+Ex 2:
+    Input: head = [1,2], pos = 0
+    Output: tail connects to node index 0
+    Explanation: There is a cycle in the linked list, where tail connects to the first node.
+Ex 3:
+    Input: head = [1], pos = -1
+    Output: no cycle
+    Explanation: There is no cycle in the linked list.
 
 */
 
@@ -80,21 +81,3 @@ const detectCycle = (head) => {
     return slow;
 };
 
-
-// const a = new Node("a");
-// const b = new Node("b");
-// const c = new Node("c");
-// const d = new Node("d");
-// const e = new Node("e");
-// const f = new Node("f");
-// const g = new Node("g");
-// const h = new Node("h");
-
-// a.next = b;
-// b.next = c;
-// c.next = d;
-// d.next = e;
-// e.next = f;
-// f.next = g;
-// g.next = h;
-// h.next = f;
