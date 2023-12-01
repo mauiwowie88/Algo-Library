@@ -27,8 +27,11 @@ The above figure represents the given linked list.
 For n = 2, node 1 with value 1 is the middle node, which is marked in red.
 Node 0 with value 2 is the only node remaining after removing node 1.
 
-Tip: Use ll.initializeList([]) to initialize a Linked List using an array
-     Use ll.printList() to see a readable linked list
+Tip: 
+    Import: const { LinkedList } = require('./listOperations');
+    Instance: const ll = new LinkedList(); 
+    Initialize: const list = ll.initializeList([1,2,3,4]);
+    Log: console.log(ll.printList(list));
 */
 
 const { LinkedList } = require('./listOperations');

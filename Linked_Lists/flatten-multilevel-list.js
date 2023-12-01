@@ -5,7 +5,11 @@ Given the head of the first level of the list, flatten the list so that all the 
 
 Return the head of the flattened list. The nodes in the list must have all of their child pointers set to null.
 
-
+Tip: 
+    Import: const { LinkedList } = require('./listOperations');
+    Instance: const ll = new LinkedList(); 
+    Initialize: const list = ll.initializeList([1,2,3,4]);
+    Log: console.log(ll.printList(list));
 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

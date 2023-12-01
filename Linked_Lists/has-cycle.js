@@ -1,7 +1,11 @@
 /*
 Determine if linked list has cycle
 
-3 -> 4 -> 5 -> 1 -> 7 -> 4
+Tip: 
+    Import: const { LinkedList } = require('./listOperations');
+    Instance: const ll = new LinkedList(); 
+    Initialize: const list = ll.initializeList([1,2,3,4]);
+    Log: console.log(ll.printList(list));
  */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

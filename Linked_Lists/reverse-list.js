@@ -12,17 +12,17 @@ in other words, the head never be null
 Input: head = 0 -> 1 -> 2-> 3 -> 4 -> 5 -> null
 Output: 5 -> 4 -> 3 -> 2 -> 1 -> 0 -> null
 
-  Tip: Use ll.initializeList([]) to initialize a Linked List using an array
-       Use ll.printList() to see a readable linked list
+Tip: 
+    Import: const { LinkedList } = require('./listOperations');
+    Instance: const ll = new LinkedList(); 
+    Initialize: const list = ll.initializeList([1,2,3,4]);
+    Log: console.log(ll.printList(list));
 */
-
-const { LinkedList } = require('./listOperations');
-const ll = new LinkedList();
 
 // 1st attempt: time O(n) | space O(1)
 const reverseIteratively = (head) => {
-    let prev = null;
     let curr = head;
+    let prev = null;
     while (curr) {
         const next = curr.next;
         curr.next = prev;

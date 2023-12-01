@@ -1,10 +1,12 @@
 /*
- Implement a basic linked list class with insertion and deletion operations. 
- The class should have methods for inserting a node at the beginning, at the end, 
- or at a specified index, as well as retrieving a node's value at a given index, 
- removing a node at a specific index, clearing the entire list, creating a linked
- lists using an array and a method to display the linked lists in a readable format.
- Ex: 1 -> 3 -> 2 -> 6 -> 5 -> null
+    Implement a basic linked list class with insertion and deletion operations. 
+    The class should have methods for inserting a node at the beginning, at the end, 
+    or at a specified index, as well as retrieving a node's value at a given index, 
+    removing a node at a specific index, clearing the entire list, creating a linked
+    lists using an array and a method to display the linked lists in a readable format.
+    
+    Tip: 
+        Import this to any file you need to use Linked List operations.
 */
 
 
@@ -118,7 +120,7 @@ class LinkedList {
     }
 
     // Create list using an array
-    initializeLL(arr) {
+    initializeList(arr) {
         if (arr.length === 0) return "Array is empty.";
 
         if (!this.head) {
@@ -154,16 +156,18 @@ class LinkedList {
     }
 
     // Print readable list
-    printListData(head) {
-        let curr = head ? head : this.head;
+    printList(input) {
+        let head;
+        if (input.head === undefined) head = input;
+        else head = input.head;
         let str = "";
-        while (curr) {
-            str += curr.value + " -> ";
-            curr = curr.next;
+        while (head) {
+            str += head.value + " -> ";
+            head = head.next;
         }
-        return str + curr;
+        return str + head;
     }
 }
 
 
-module.exports = LinkedList;
+module.exports = { Node, LinkedList };

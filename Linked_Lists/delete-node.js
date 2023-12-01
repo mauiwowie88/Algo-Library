@@ -17,6 +17,12 @@ For the input, you should provide the entire linked list head and the node to be
 We will build the linked list and pass the node to your function.
 The output will be the entire list after calling your function.
 
+Tip: 
+    Import: const { LinkedList } = require('./listOperations');
+    Instance: const ll = new LinkedList(); 
+    Initialize: const list = ll.initializeList([1,2,3,4]);
+    Log: console.log(ll.printList(list));
+
  */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

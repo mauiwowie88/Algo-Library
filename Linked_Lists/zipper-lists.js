@@ -12,12 +12,18 @@ Ex: List1 = a -> b -> c -> d -> e
     List2 = x -> y -> z
     output = a -> x -> b -> y -> c -> z -> d -> e -> null
 
-Tip: Use ll.initializeList([]) to initialize a Linked List using an array
-     Use ll.printList() to see a readable linked list
+Tip: 
+    Import: const { LinkedList } = require('./listOperations');
+    Instance: const ll = new LinkedList(); 
+    Initialize: const list = ll.initializeList([1,2,3,4]);
+    Log: console.log(ll.printList(list1))
 */
-const { Node, LinkedList } = require('./listOperations');
-
+const { Node, LinkedList } = require('./ListOperations');
 const ll = new LinkedList();
+
+
+const list1 = ll.initializeList([1, 2, 3, 4]);
+const list2 = ll.initializeList(['a', 'b', 'c']);
 
 // 1st attempt: time O(N + M) | space O(1)
 const zipperLists = (head1, head2) => {
@@ -31,7 +37,6 @@ const zipperLists = (head1, head2) => {
         if (count % 2 === 0) {
             tail.next = current1;
             current1 = current1.next;
-
         } else {
             tail.next = current2;
             current2 = current2.next;
@@ -44,4 +49,30 @@ const zipperLists = (head1, head2) => {
     if (current2) tail.next = current2;
 
     return dummyNode.next;
+};
+
+// 2nd attempt: 
+const zipperLists2 = (head1, head2) => {
+    let dummy = new Node;
+    let tail = dummy;
+    let curr1 = head1;
+    let curr2 = head2;
+
+    while (curr1 && curr2) {
+        if (curr1) {
+            tail.next = curr1;
+            tail = tail.next;
+            curr1 = curr1.next;
+        }
+        if (curr2) {
+            tail.next = curr2;
+            tail = tail.next;
+            curr2 = curr2.next;
+        }
+    }
+
+    if (curr1) tail.next = curr1;
+    if (curr2) tail.next = curr2;
+
+    return dummy.next;
 };

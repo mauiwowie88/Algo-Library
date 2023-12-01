@@ -12,8 +12,11 @@ Output: [8,0,7]
 Input: l1 = [0], l2 = [0]
 Output: [0]
 
-Tip: Use ll.initializeList([]) to initialize a Linked List using an array
-     Use ll.printList() to see a readable linked list
+Tip: 
+    Import: const { LinkedList } = require('./listOperations');
+    Instance: const ll = new LinkedList(); 
+    Initialize: const list = ll.initializeList([1,2,3,4]);
+    Log: console.log(ll.printList(list));
 
 */
 

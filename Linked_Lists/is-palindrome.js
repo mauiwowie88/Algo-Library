@@ -8,8 +8,11 @@ a <- b <- c   c -> b -> a
 1 -> 0 -> 1
      s    f
 
-  Tip: Use ll.initializeList([]) to initialize a Linked List using an array
-       Use ll.printList() to see a readable linked list
+Tip: 
+    Import: const { LinkedList } = require('./listOperations');
+    Instance: const ll = new LinkedList(); 
+    Initialize: const list = ll.initializeList([1,2,3,4]);
+    Log: console.log(ll.printList(list));
 
  */
 

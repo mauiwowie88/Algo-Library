@@ -20,8 +20,11 @@ Input: head = [1,2,3,4,5,6,7,8,9,10,11], m = 1, n = 3
 Output: [1,5,9]
 Explanation: Head of linked list after removing nodes is returned.
 
-Tip: Use ll.initializeList([]) to initialize a Linked List using an array
-     Use ll.printList() to see a readable linked list
+Tip: 
+    Import: const { LinkedList } = require('./listOperations');
+    Instance: const ll = new LinkedList(); 
+    Initialize: const list = ll.initializeList([1,2,3,4]);
+    Log: console.log(ll.printList(list));
 */
 const operations = require('./ListMethods');
 const linkedList = new operations();
