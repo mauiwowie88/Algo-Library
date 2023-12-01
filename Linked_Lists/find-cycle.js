@@ -26,16 +26,12 @@ Ex 3:
     Import: const { LinkedList } = require('./listOperations');
     Instance: const ll = new LinkedList(); 
     Initialize: const list = ll.initializeList([1,2,3,4]);
-    Log: console.log(ll.printList(list));
+    Log: console.log(ll.printList(list)) -> 1 -> 2 -> 3 -> 4 -> null
 
 */
 
-const { Node, LinkedList } = require('./listOperations');
-const ll = new LinkedList();
-
-const list = ll.initializeList([1, 2, 3, 4, 5, 6, 7, 8, 9])
-
-ll.createCycle = function (position) {
+// Under development
+function createCycle(position) {
     if (position <= 0) return;
 
     let current = this.head;
@@ -54,8 +50,7 @@ ll.createCycle = function (position) {
 }
 
 
-ll.createCycle(4)
-console.log(list)
+
 
 
 

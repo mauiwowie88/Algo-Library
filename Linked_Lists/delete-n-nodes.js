@@ -24,13 +24,8 @@ Tip:
     Import: const { LinkedList } = require('./listOperations');
     Instance: const ll = new LinkedList(); 
     Initialize: const list = ll.initializeList([1,2,3,4]);
-    Log: console.log(ll.printList(list));
+    Log: console.log(ll.printList(list)) -> 1 -> 2 -> 3 -> 4 -> null
 */
-const operations = require('./ListMethods');
-const linkedList = new operations();
-
-linkedList.insertFirst(4);
-console.log(linkedList)
 
 const deleteNNodes = (head, m, n) => {
     let count = 0;

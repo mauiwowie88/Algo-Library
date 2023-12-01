@@ -12,12 +12,9 @@ Tip:
     Import: const { LinkedList } = require('./listOperations');
     Instance: const ll = new LinkedList(); 
     Initialize: const list = ll.initializeList([1,2,3,4]);
-    Log: console.log(ll.printList(list));
+    Log: console.log(ll.printList(list)) -> 1 -> 2 -> 3 -> 4 -> null
 
  */
-
-const { Node, LinkedList } = require('./listOperations');
-const ll = new LinkedList();
 
 // 1st attempt: time O(n) | space O(1)
 const palindrome = (list) => {

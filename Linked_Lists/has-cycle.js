@@ -5,7 +5,7 @@ Tip:
     Import: const { LinkedList } = require('./listOperations');
     Instance: const ll = new LinkedList(); 
     Initialize: const list = ll.initializeList([1,2,3,4]);
-    Log: console.log(ll.printList(list));
+    Log: console.log(ll.printList(list)) -> 1 -> 2 -> 3 -> 4 -> null
  */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
