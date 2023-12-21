@@ -26,17 +26,16 @@
 
 // 1st attempt: time O(n) | space O(1)
 function calcDroneMinEnergy(route) {
-    let tank = 0;
-    let min = 0;
+    let tank = 0; // How much is currently in the tank
+    let min = 0; // This is to keep track of how low the tank got
     for (let i = 1; i < route.length; i++) {
-        const prev = route[i - 1][2];
-        const curr = route[i][2];
-        const diff = Math.abs(prev - curr);
+        const prev = route[i - 1][2]; // Prev height
+        const curr = route[i][2]; // Current height
+        const diff = Math.abs(prev - curr); // Find the difference between prev height and curr
 
-        if (prev > curr) tank += diff;
-        if (prev < curr) tank -= diff;
-        min = Math.min(tank, min);
+        if (prev > curr) tank += diff; // If prev higher tank increments distance
+        if (prev < curr) tank -= diff;  // else if curr is higher subtract from tank
+        min = Math.min(tank, min); // If tank got below zero reassign the new min
     }
-    return Math.abs(min);
+    return Math.abs(min); // Return the difference from tank now to how it started
 }
-

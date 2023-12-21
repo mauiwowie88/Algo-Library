@@ -14,7 +14,11 @@ Tip:
     Initialize: const list = ll.initializeList([1,2,3,4]);
     Log: console.log(ll.printList(list)) -> 1 -> 2 -> 3 -> 4 -> null
 
- */
+*/
+
+const { Node, LinkedList } = require('./listOperations');
+const ll = new LinkedList();
+
 
 // 1st attempt: time O(n) | space O(1)
 const palindrome = (list) => {
@@ -42,6 +46,52 @@ const palindrome = (list) => {
 
     return true;
 };
+
+// 2nd attempt: time O(n) | space O(n)
+const palin = (list) => {
+    const arr = [];
+    let head = list.head;
+
+    while (head) {
+        arr.push(head.value);
+        head = head.next;
+    }
+
+    for (let i = 0, j = arr.length - 1; i < j; i++, j--) {
+        if (arr[i] !== arr[j]) return false;
+    }
+
+    return true;
+}
+
+const list = ll.initializeList([1, 2, 3, 4, 5, 6, 4, 3, 2, 1]);
+// 3rd attempt: 
+const palindromic = (list) => {
+    let fast = list.head;
+    let slow = list.head;
+    let tail = null;
+
+    while (fast.next && fast.next.next & slow) {
+        fast = fast.next.next;
+
+        const next = slow.next;
+        slow.next = tail;
+        tail = slow;
+        slow = next;
+    }
+    console.log(slow)
+
+    const loopSecondHalf = (head, tail) => {
+        if (!head || !tail) return true;
+        if (head.value !== tail.value) return false;
+        console.log([head.value, tail.value])
+        return loopSecondHalf(head.next, tail.next);
+    }
+
+    return loopSecondHalf(tail, slow);
+}
+
+console.log(palindromic(list))
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

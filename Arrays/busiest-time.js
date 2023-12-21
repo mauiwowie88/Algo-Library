@@ -32,11 +32,12 @@
 
 // 1st attempt: time O(n) | space O(1)
 const mallMax = (arr) => {
+    let length = arr.length;
     let store = 0;
     let max = 0;
     let output = 0;
 
-    for (let i = 0; i < arr.length; i++) {
+    for (let i = 0; i < length; i++) {
         if (arr[i][2] === 1) store += arr[i][1];
         if (arr[i][2] === 0) store -= arr[i][1];
 
@@ -44,7 +45,7 @@ const mallMax = (arr) => {
 
         if (store > max) {
             max = store;
-            output = arr[i][0]
+            output = arr[i][0];
         }
     }
     return output;
