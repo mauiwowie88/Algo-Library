@@ -31,24 +31,27 @@
 */
 
 // 1st attempt: time O(n) | space O(1)
-const mallMax = (arr) => {
-    let length = arr.length;
-    let store = 0;
-    let max = 0;
-    let output = 0;
+function findBusiestPeriod(arr) {
+    let people = 0; //This provides the queantity of people in mall currently
+    let length = arr.length; // This is for the for loop to not look for arr.length each iteration
+    let max = 0; // This stores the current maximum people in at once
+    let maxTime = 0; // This is our output; time when the most people were in mall
 
     for (let i = 0; i < length; i++) {
-        if (arr[i][2] === 1) store += arr[i][1];
-        if (arr[i][2] === 0) store -= arr[i][1];
-
-        if (i < arr.length - 1 && arr[i][0] === arr[i + 1][0]) continue;
-
-        if (store > max) {
-            max = store;
-            output = arr[i][0];
+        let curr = arr[i];
+        if (curr[2] === 1) people += curr[1];
+        else people -= curr[1];
+        // Check if next el in arr is not undefined and check if the next el has the same time
+        if (arr[i + 1] !== undefined && curr[0] === arr[i + 1][0]) continue;
+        // This checks if current people in mall is > than the current max
+        if (people > max) {
+            // If so reassign max to current people count
+            max = people;
+            // And give it the corresponding time frame
+            maxTime = curr[0];
         }
     }
-    return output;
-}
 
+    return maxTime;
+}
 
