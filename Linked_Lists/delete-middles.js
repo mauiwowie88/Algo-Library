@@ -36,18 +36,42 @@ Tip:
 
 // 1st attempt: time O(n) | space O(1)
 const deleteMiddleNode = (list) => {
-    const half = Math.floor(list.size / 2);
-    let count = 0;
-    let previousNode = null;
-    let currentNode = list.head;
-    while (count < half) {
-        previousNode = currentNode;
-        currentNode = currentNode.next;
-        count++;
-    }
-    previousNode.next = currentNode.next;
-    return list;
+  const half = Math.floor(list.size / 2);
+  let count = 0;
+  let previousNode = null;
+  let currentNode = list.head;
+  while (count < half) {
+    previousNode = currentNode;
+    currentNode = currentNode.next;
+    count++;
+  }
+  previousNode.next = currentNode.next;
+  return list;
 };
+
+const { LinkedList } = require("./listOperations");
+const ll = new LinkedList();
+const list = ll.initializeList([1, 2, 3, 4, 5, 6, 7]);
+
+const middle = (list) => {
+  const head = list.head;
+  if (!head || !head.next) return null;
+
+  let prev = null;
+  let slow = head;
+  let fast = head.next;
+  while (fast !== null) {
+    prev = slow;
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+  prev.next = slow.next;
+  list.size--;
+  return head;
+};
+
+const newList = middle(list);
+console.log(ll.printList(newList));
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -58,17 +82,17 @@ const deleteMiddleNode = (list) => {
 
 // O(n) time | O(1) space
 const deleteMiddle = (head) => {
-    if (!head || !head.next) return null;
-    let prev = null;
-    let slow = head;
-    let fast = head;
-    // find middle of linked list and keep track of prev node
-    while (fast && fast.next) {
-        prev = slow;
-        slow = slow.next;
-        fast = fast.next.next;
-    }
-    // update pointers
-    prev.next = slow.next;
-    return head;
+  if (!head || !head.next) return null;
+  let prev = null;
+  let slow = head;
+  let fast = head;
+  // find middle of linked list and keep track of prev node
+  while (fast && fast.next) {
+    prev = slow;
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+  // update pointers
+  prev.next = slow.next;
+  return head;
 };
