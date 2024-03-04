@@ -15,8 +15,8 @@ Output: [0]
 Tip: 
     Import: const { LinkedList } = require('./listOperations');
     Instance: const ll = new LinkedList(); 
-    Initialize: const list = ll.initializeList([1,2,3,4]);
-    Log: console.log(ll.printList(list)) -> 1 -> 2 -> 3 -> 4 -> null
+    Initialize: const list = ll.initialize([1,2,3,4]);
+    Log: console.log(ll.print(list)) -> 1 -> 2 -> 3 -> 4 -> null
 
 */
 
@@ -29,40 +29,40 @@ Tip:
 
 // O(n + m) time | O(n + m) space
 const addTwoNumbers = (l1, l2) => {
-    const stack1 = [];
-    const stack2 = [];
-    let current1 = l1;
-    let current2 = l2;
-    while (current1) {
-        stack1.push(current1);
-        current1 = current1.next;
+  const stack1 = [];
+  const stack2 = [];
+  let current1 = l1;
+  let current2 = l2;
+  while (current1) {
+    stack1.push(current1);
+    current1 = current1.next;
+  }
+  while (current2) {
+    stack2.push(current2);
+    current2 = current2.next;
+  }
+
+  let carry = 0;
+
+  let ans = null;
+  while (stack1.length || stack2.length || carry > 0) {
+    let total = 0;
+    if (stack1.length) {
+      const node = stack1.pop();
+      total += node.val;
     }
-    while (current2) {
-        stack2.push(current2);
-        current2 = current2.next;
-    }
-
-    let carry = 0;
-
-    let ans = null;
-    while (stack1.length || stack2.length || carry > 0) {
-        let total = 0;
-        if (stack1.length) {
-            const node = stack1.pop();
-            total += node.val;
-        }
-        if (stack2.length) {
-            const node = stack2.pop();
-            total += node.val;
-        }
-
-        const sum = total + carry;
-        const digit = sum % 10;
-        const newNode = new ListNode(digit);
-        newNode.next = ans;
-        ans = newNode;
-        carry = sum >= 10 ? 1 : 0;
+    if (stack2.length) {
+      const node = stack2.pop();
+      total += node.val;
     }
 
-    return ans;
+    const sum = total + carry;
+    const digit = sum % 10;
+    const newNode = new ListNode(digit);
+    newNode.next = ans;
+    ans = newNode;
+    carry = sum >= 10 ? 1 : 0;
+  }
+
+  return ans;
 };

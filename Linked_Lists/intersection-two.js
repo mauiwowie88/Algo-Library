@@ -28,8 +28,8 @@ From the head of A, it reads as [4,1,8,4,5]. From the head of B, it reads as [5,
 Tip: 
     Import: const { LinkedList } = require('./listOperations');
     Instance: const ll = new LinkedList(); 
-    Initialize: const list = ll.initializeList([1,2,3,4]);
-    Log: console.log(ll.printList(list)) -> 1 -> 2 -> 3 -> 4 -> null
+    Initialize: const list = ll.initialize([1,2,3,4]);
+    Log: console.log(ll.print(list)) -> 1 -> 2 -> 3 -> 4 -> null
 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -40,13 +40,13 @@ Tip:
 
 // O(n + m) time | O(1) space
 const getIntersectionNode = (headA, headB) => {
-    let p1 = headA;
-    let p2 = headB;
+  let p1 = headA;
+  let p2 = headB;
 
-    while (p1 !== p2) {
-        p1 = p1 === null ? headB : p1.next;
-        p2 = p2 === null ? headA : p2.next;
-    }
+  while (p1 !== p2) {
+    p1 = p1 === null ? headB : p1.next;
+    p2 = p2 === null ? headA : p2.next;
+  }
 
-    return p1;
+  return p1;
 };

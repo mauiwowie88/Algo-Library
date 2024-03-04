@@ -25,34 +25,29 @@ Ex 3:
     Tip: 
     Import: const { LinkedList } = require('./listOperations');
     Instance: const ll = new LinkedList(); 
-    Initialize: const list = ll.initializeList([1,2,3,4]);
-    Log: console.log(ll.printList(list)) -> 1 -> 2 -> 3 -> 4 -> null
+    Initialize: const list = ll.initialize([1,2,3,4]);
+    Log: console.log(ll.print(list)) -> 1 -> 2 -> 3 -> 4 -> null
 
 */
 
 // Under development
 function createCycle(position) {
-    if (position <= 0) return;
+  if (position <= 0) return;
 
-    let current = this.head;
-    let cycleStart = null;
-    let index = 0;
+  let current = this.head;
+  let cycleStart = null;
+  let index = 0;
 
-    while (current.next) {
-        if (index === position) cycleStart = current;
-        current = current.next;
-        index++;
-    }
+  while (current.next) {
+    if (index === position) cycleStart = current;
+    current = current.next;
+    index++;
+  }
 
-    if (cycleStart) current.next = cycleStart;
+  if (cycleStart) current.next = cycleStart;
 
-    return this.head;
+  return this.head;
 }
-
-
-
-
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -62,23 +57,22 @@ function createCycle(position) {
 
 // O(n) time | O(1) space where n is the number of nodes in linked list
 const detectCycle = (head) => {
-    let slow = head;
-    let fast = head;
-    let firstIteration = true;
-    while (slow !== fast || firstIteration) {
-        if (!fast || !fast.next) return null;
-        slow = slow.next;
-        fast = fast.next.next;
-        firstIteration = false;
-    }
+  let slow = head;
+  let fast = head;
+  let firstIteration = true;
+  while (slow !== fast || firstIteration) {
+    if (!fast || !fast.next) return null;
+    slow = slow.next;
+    fast = fast.next.next;
+    firstIteration = false;
+  }
 
-    slow = head;
+  slow = head;
 
-    while (slow !== fast) {
-        slow = slow.next;
-        fast = fast.next;
-    }
+  while (slow !== fast) {
+    slow = slow.next;
+    fast = fast.next;
+  }
 
-    return slow;
+  return slow;
 };
-

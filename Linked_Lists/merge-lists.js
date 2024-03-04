@@ -9,18 +9,17 @@ Ex: List1 = 1 -> 3 -> 3 -> 5 -> 5 -> null
 Tip: 
     Import: const { LinkedList } = require('./listOperations');
     Instance: const ll = new LinkedList(); 
-    Initialize: const list = ll.initializeList([1,2,3,4]);
-    Log: console.log(ll.printList(list)) -> 1 -> 2 -> 3 -> 4 -> null
+    Initialize: const list = ll.initialize([1,2,3,4]);
+    Log: console.log(ll.print(list)) -> 1 -> 2 -> 3 -> 4 -> null
 */
 
-const { LinkedList } = require('./ListOperations');
+const { LinkedList } = require("./ListOperations");
 const ll = new LinkedList();
-const list = ll.initializeList([1, 2, 3, 4]);
-
+const list = ll.initialize([1, 2, 3, 4]);
 
 // 1st attempt: time O(N + M) | space O(1)
 const merge = (head1, head2) => {
-  const dummyNode = new Node();;
+  const dummyNode = new Node();
   let tail = dummyNode;
   let current1 = head1;
   let current2 = head2;
@@ -41,7 +40,7 @@ const merge = (head1, head2) => {
   return dummyNode.next;
 };
 
-// 2nd attempt: 
+// 2nd attempt:
 const merge2 = (head1, head2) => {
   if (!head1) return head2;
   if (!head2) return head1;
@@ -53,14 +52,12 @@ const merge2 = (head1, head2) => {
     head2.next = merge(head1, head2.next);
     return head2;
   }
-}
+};
 
-// 3rd attempt: 
-const merge3 = (head1, head2) => {
+// 3rd attempt:
+const merge3 = (head1, head2) => {};
 
-}
-
-// console.log(ll.printList(list.head));
+// console.log(ll.print(list.head));
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -71,7 +68,7 @@ const merge3 = (head1, head2) => {
 
 // O(n) time | O(1) space
 const mergeLists = (head1, head2) => {
-  const dummyNode = new Node();;
+  const dummyNode = new Node();
   let tail = dummyNode;
   let current1 = head1;
   let current2 = head2;

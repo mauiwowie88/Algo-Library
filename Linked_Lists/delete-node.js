@@ -20,8 +20,8 @@ The output will be the entire list after calling your function.
 Tip: 
     Import: const { LinkedList } = require('./listOperations');
     Instance: const ll = new LinkedList(); 
-    Initialize: const list = ll.initializeList([1,2,3,4]);
-    Log: console.log(ll.printList(list)) -> 1 -> 2 -> 3 -> 4 -> null
+    Initialize: const list = ll.initialize([1,2,3,4]);
+    Log: console.log(ll.print(list)) -> 1 -> 2 -> 3 -> 4 -> null
 
  */
 
@@ -33,8 +33,8 @@ Tip:
 
 // O(1) time | O(1) space
 const deleteNode = (node) => {
-    // change current node's val to be the val of the next node
-    node.val = node.next.val;
-    // set current node next to be next node's next
-    node.next = node.next.next;
+  // change current node's val to be the val of the next node
+  node.val = node.next.val;
+  // set current node next to be next node's next
+  node.next = node.next.next;
 };

@@ -30,8 +30,8 @@ Node 0 with value 2 is the only node remaining after removing node 1.
 Tip: 
     Import: const { LinkedList } = require('./listOperations');
     Instance: const ll = new LinkedList(); 
-    Initialize: const list = ll.initializeList([1,2,3,4]);
-    Log: console.log(ll.printList(list)) -> 1 -> 2 -> 3 -> 4 -> null
+    Initialize: const list = ll.initialize([1,2,3,4]);
+    Log: console.log(ll.print(list)) -> 1 -> 2 -> 3 -> 4 -> null
 */
 
 // 1st attempt: time O(n) | space O(1)
@@ -49,10 +49,7 @@ const deleteMiddleNode = (list) => {
   return list;
 };
 
-const { LinkedList } = require("./listOperations");
-const ll = new LinkedList();
-const list = ll.initializeList([1, 2, 3, 4, 5, 6, 7]);
-
+// 2nd attempt: time O(n) | space O(1)
 const middle = (list) => {
   const head = list.head;
   if (!head || !head.next) return null;
@@ -71,7 +68,7 @@ const middle = (list) => {
 };
 
 const newList = middle(list);
-console.log(ll.printList(newList));
+console.log(ll.print(newList));
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

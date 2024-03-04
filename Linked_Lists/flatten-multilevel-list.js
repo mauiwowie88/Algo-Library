@@ -8,8 +8,8 @@ Return the head of the flattened list. The nodes in the list must have all of th
 Tip: 
     Import: const { LinkedList } = require('./listOperations');
     Instance: const ll = new LinkedList(); 
-    Initialize: const list = ll.initializeList([1,2,3,4]);
-    Log: console.log(ll.printList(list)) -> 1 -> 2 -> 3 -> 4 -> null
+    Initialize: const list = ll.initialize([1,2,3,4]);
+    Log: console.log(ll.print(list)) -> 1 -> 2 -> 3 -> 4 -> null
 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -20,23 +20,23 @@ Tip:
 
 // O(n) time | O(n) space
 const flatten = (head) => {
-    if (!head) return null;
-    const dummyNode = new Node(0, head, null, null);
-    _flatten(head, dummyNode);
-    dummyNode.next.prev = null;
-    return dummyNode.next;
+  if (!head) return null;
+  const dummyNode = new Node(0, head, null, null);
+  _flatten(head, dummyNode);
+  dummyNode.next.prev = null;
+  return dummyNode.next;
 };
 
 const _flatten = (current, prev) => {
-    // base case
-    if (!current) return prev;
-    const next = current.next;
-    // update pointers
-    prev.next = current;
-    current.prev = prev;
-    // get the tail
-    const tail = _flatten(current.child, current);
-    // update child to be null;
-    current.child = null;
-    return _flatten(next, tail);
+  // base case
+  if (!current) return prev;
+  const next = current.next;
+  // update pointers
+  prev.next = current;
+  current.prev = prev;
+  // get the tail
+  const tail = _flatten(current.child, current);
+  // update child to be null;
+  current.child = null;
+  return _flatten(next, tail);
 };

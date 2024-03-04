@@ -23,28 +23,30 @@ Explanation: Head of linked list after removing nodes is returned.
 Tip: 
     Import: const { LinkedList } = require('./listOperations');
     Instance: const ll = new LinkedList(); 
-    Initialize: const list = ll.initializeList([1,2,3,4]);
-    Log: console.log(ll.printList(list)) -> 1 -> 2 -> 3 -> 4 -> null
+    Initialize: const list = ll.initialize([1,2,3,4]);
+    Log: console.log(ll.print(list)) -> 1 -> 2 -> 3 -> 4 -> null
 */
 
+// 1st attempt:
 const deleteNNodes = (head, m, n) => {
-    let count = 0;
-    let curr = head;
-    while (curr) {
-        count++;
-        if (count === m) {
-            let checker = 0;
-            let tail = curr.next;
-            while (checker < n && tail) {
-                tail = tail.next;
-                checker++;
-            }
-            curr.next = tail;
-            count = 0;
-        }
-        curr = curr.next;
+  let count = 0;
+  let curr = head;
+  while (curr) {
+    count++;
+    if (count === m) {
+      let step = 0;
+      let tail = curr.next;
+      while (step < n && tail) {
+        tail = tail.next;
+        step++;
+      }
+      curr.next = tail;
+      count = 0;
     }
-}
+    curr = curr.next;
+  }
+  return head;
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -55,23 +57,23 @@ const deleteNNodes = (head, m, n) => {
 
 // O(n) time | O(1) space where n is the number of nodes
 const deleteNodes = (head, m, n) => {
-    if (!head) return head;
-    let current = head;
-    let count = 0;
-    while (current) {
-        count++;
-        if (count === m) {
-            // need to find next node;
-            let nextNode = current.next;
-            let step = 0;
-            while (step !== n && nextNode) {
-                step++;
-                nextNode = nextNode.next;
-            }
-            count = 0;
-            current.next = nextNode;
-        }
-        current = current.next;
+  if (!head) return head;
+  let current = head;
+  let count = 0;
+  while (current) {
+    count++;
+    if (count === m) {
+      // need to find next node;
+      let nextNode = current.next;
+      let step = 0;
+      while (step !== n && nextNode) {
+        step++;
+        nextNode = nextNode.next;
+      }
+      count = 0;
+      current.next = nextNode;
     }
-    return head;
+    current = current.next;
+  }
+  return head;
 };

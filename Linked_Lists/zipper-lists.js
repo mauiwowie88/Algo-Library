@@ -15,58 +15,58 @@ Ex: List1 = a -> b -> c -> d -> e
 Tip: 
     Import: const { LinkedList } = require('./listOperations');
     Instance: const ll = new LinkedList(); 
-    Initialize: const list = ll.initializeList([1,2,3,4]);
-    Log: console.log(ll.printList(list1)) -> 1 -> 2 -> 3 -> 4 -> null
+    Initialize: const list = ll.initialize([1,2,3,4]);
+    Log: console.log(ll.print(list1)) -> 1 -> 2 -> 3 -> 4 -> null
 */
 
 // 1st attempt: time O(N + M) | space O(1)
 const zipperLists = (head1, head2) => {
-    const dummyNode = new Node();
-    let tail = dummyNode;
-    let current1 = head1;
-    let current2 = head2;
-    let count = 0;
+  const dummyNode = new Node();
+  let tail = dummyNode;
+  let current1 = head1;
+  let current2 = head2;
+  let count = 0;
 
-    while (current1 && current2) {
-        if (count % 2 === 0) {
-            tail.next = current1;
-            current1 = current1.next;
-        } else {
-            tail.next = current2;
-            current2 = current2.next;
-        }
-        tail = tail.next;
-        count += 1;
+  while (current1 && current2) {
+    if (count % 2 === 0) {
+      tail.next = current1;
+      current1 = current1.next;
+    } else {
+      tail.next = current2;
+      current2 = current2.next;
     }
+    tail = tail.next;
+    count += 1;
+  }
 
-    if (current1) tail.next = current1;
-    if (current2) tail.next = current2;
+  if (current1) tail.next = current1;
+  if (current2) tail.next = current2;
 
-    return dummyNode.next;
+  return dummyNode.next;
 };
 
-// 2nd attempt: 
+// 2nd attempt:
 const zipperLists2 = (head1, head2) => {
-    let dummy = new Node;
-    let tail = dummy;
-    let curr1 = head1;
-    let curr2 = head2;
+  let dummy = new Node();
+  let tail = dummy;
+  let curr1 = head1;
+  let curr2 = head2;
 
-    while (curr1 && curr2) {
-        if (curr1) {
-            tail.next = curr1;
-            tail = tail.next;
-            curr1 = curr1.next;
-        }
-        if (curr2) {
-            tail.next = curr2;
-            tail = tail.next;
-            curr2 = curr2.next;
-        }
+  while (curr1 && curr2) {
+    if (curr1) {
+      tail.next = curr1;
+      tail = tail.next;
+      curr1 = curr1.next;
     }
+    if (curr2) {
+      tail.next = curr2;
+      tail = tail.next;
+      curr2 = curr2.next;
+    }
+  }
 
-    if (curr1) tail.next = curr1;
-    if (curr2) tail.next = curr2;
+  if (curr1) tail.next = curr1;
+  if (curr2) tail.next = curr2;
 
-    return dummy.next;
+  return dummy.next;
 };
