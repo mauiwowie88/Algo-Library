@@ -16,7 +16,6 @@
 //     else {
 //         let curr = this.head;
 //         while(curr !== null) {
-
 //         }
 //     }
 //     return 'Done';
@@ -162,4 +161,20 @@ const printer = (list) => {
   return (output += "null");
 };
 
-console.log(printer(list1));
+// console.log(printer(list1));
+const isPalindrome = function (x) {
+  const str = String(x);
+  let start = 0;
+  let end = str.length - 1;
+  while (start < end) {
+    if (str[start] === str[end]) {
+      start++;
+      end--;
+    } else {
+      return false;
+    }
+  }
+  return true;
+};
+
+console.log(isPalindrome(-121));
