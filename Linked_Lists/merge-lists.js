@@ -7,15 +7,16 @@ Ex: List1 = 1 -> 3 -> 3 -> 5 -> 5 -> null
     output = -2 -> 1 -> 3 -> 3 -> 4 -> 5 -> 5 -> 6 -> 9 -> 10 -> null
 
 Tip: 
-    Import: const { LinkedList } = require('./listOperations');
+    Import: const { LinkedList, Node } = require('./listOperations');
     Instance: const ll = new LinkedList(); 
     Initialize: const list = ll.initialize([1,2,3,4]);
     Log: console.log(ll.print(list)) -> 1 -> 2 -> 3 -> 4 -> null
 */
 
-const { LinkedList } = require("./ListOperations");
-const ll = new LinkedList();
-const list = ll.initialize([1, 2, 3, 4]);
+const { LinkedList, Node } = require("./LinkedList");
+const list = new LinkedList();
+const list1 = list.initialize([1, 2, 3, 4]);
+const list2 = list.initialize([1, 1, 3, 5]);
 
 // 1st attempt: time O(N + M) | space O(1)
 const merge = (head1, head2) => {
@@ -55,9 +56,25 @@ const merge2 = (head1, head2) => {
 };
 
 // 3rd attempt:
-const merge3 = (head1, head2) => {};
+const merge3 = (head1, head2) => {
+  const dummyNode = new Node();
+  let curr = dummyNode;
+  let one = head1;
+  let two = head2;
+  while (one && two) {
+    if (one.value < two.value) {
+      curr.next = one;
+      one = one.next;
+    } else {
+      curr.next = two;
+      two = two.next;
+    }
+    curr = curr.next;
+  }
+  curr.next = one || two;
 
-// console.log(ll.print(list.head));
+  return dummyNode.next;
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

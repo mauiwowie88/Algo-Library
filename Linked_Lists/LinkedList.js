@@ -23,33 +23,22 @@ class LinkedList {
     this.size = 0;
   }
 
-  // Clear list
-  delete() {
-    this.head = null;
-    this.tail = null;
-    this.size = 0;
-  }
-
-  // Create list using an array
   initialize(arr) {
-    if (!Array.isArray(arr)) return (this.head = new Node(arr));
-    if (arr.length === 0) return "Array is empty.";
-
-    let curr = null;
+    if (!Array.isArray(arr)) throw new Error("Input needs to be an array.");
+    if (arr.length === 0) throw new Error("Input array is empty.");
+    const dummyNode = new Node();
+    let curr = dummyNode;
     for (const num of arr) {
       const newNode = new Node(num);
-      if (!this.head) {
-        this.head = newNode;
-        curr = this.head;
-      } else {
-        curr.next = newNode;
-        curr = newNode;
-      }
+      curr.next = newNode;
+      curr = curr.next;
+
       this.size++;
     }
-
+    this.head = dummyNode.next;
     this.tail = curr;
-    return this;
+
+    return dummyNode.next;
   }
 
   // Print readable list
@@ -59,7 +48,7 @@ class LinkedList {
       Array.isArray(input) ||
       typeof input === "string"
     )
-      return "Not a Linked List!";
+      return new Error("Input not a Linked List!");
     let head;
     if (input.head === undefined) head = input;
     else head = input.head;
@@ -100,8 +89,9 @@ class LinkedList {
   }
   // Insert at index
   insertAt(value, index) {
-    if (index < 0 || index > this.size) return "This index is out of range.";
-    if (isNaN(index)) return "Index is not a number";
+    if (index < 0 || index > this.size)
+      return new Error("This index is out of range.");
+    if (isNaN(index)) return new Error("Index is not a number");
     if (index === 0) return this.insertFirst(value);
     if (index === this.size) return this.insertLast(value);
 
@@ -125,8 +115,9 @@ class LinkedList {
 
   // Get at index
   getAt(index) {
-    if (index < 0 || index > this.size) return "This index is out of range.";
-    if (isNaN(index)) return "Index is not a number";
+    if (index < 0 || index > this.size)
+      return new Error("This index is out of range.");
+    if (isNaN(index)) return new Error("Index is not a number");
     if (index === 0) return this.head.value;
     if (index === this.size) return this.tail.value;
 
@@ -142,8 +133,9 @@ class LinkedList {
 
   // Remove at index
   removeAt(index) {
-    if (index < 0 || index > this.size) return "This index is out of range.";
-    if (isNaN(index)) return "Index is not a number";
+    if (index < 0 || index > this.size)
+      return new Error("This index is out of range.");
+    if (isNaN(index)) return new Error("Index is not a number");
 
     let previousNode = null;
     let currentNode = this.head;
@@ -157,6 +149,13 @@ class LinkedList {
     previousNode.next = currentNode.next;
     this.size--;
     return `Removed node at index ${index}.`;
+  }
+
+  // Clear list
+  delete() {
+    this.head = null;
+    this.tail = null;
+    this.size = 0;
   }
 }
 
